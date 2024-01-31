@@ -343,4 +343,4 @@ function setLevel(level) {
 
 
 
-await initializeGame();
+initializeGame();
