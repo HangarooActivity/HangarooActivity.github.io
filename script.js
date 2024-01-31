@@ -19,13 +19,14 @@ let incorrectGuesses = 0;
 let points = 0;
 let cluesUsed = 0;
 let currentQuestionIndex = 0;
-let currentLevel = "easy";
+let currentLevel = "";
 let changeLevel = 0;
 let difficultyCounter = 0;
 let questionSet = [];
 
 function initializeGame() {
-    secretWord = chooseWord();
+    postQuestion();
+	secretWord = chooseWord();
     
     // Check if currentQuestionIndex is within bounds
     if (currentQuestionIndex >= 0 && currentQuestionIndex < levels[currentLevel].length) {
@@ -40,7 +41,7 @@ function initializeGame() {
     incorrectGuesses = 0;
     cluesUsed = 0;
     updateDisplay();
-    postQuestion();
+    
 }
 
 
@@ -63,15 +64,15 @@ function postQuestion() {
 	switch (changeLevel) {
 		case 0:
 			currentLevel = "easy"
-			questionSet = splitQuestions("easy"); //pull easy questions
+			questionSet = await splitQuestions("easy"); //pull easy questions
 			break;
 		case 1:
 			currentLevel = "hard"
-			questionSet = splitQuestions("hard"); //pull hard questions
+			questionSet = await splitQuestions("hard"); //pull hard questions
 			break;
 		case 2:
 			currentLevel = "expert"
-			questionSet = splitQuestions("expert");//pull expert questions
+			questionSet = await splitQuestions("expert");//pull expert questions
 			break;
 	}
 	
@@ -138,7 +139,7 @@ function updateDisplay() {
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     updateLetterButtons();
     
-    document.getElementById('queston').innerText = questionSet[currentQuestionIndex];
+    document.getElementById('question-content').innerText = questionSet[currentQuestionIndex];
     
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
