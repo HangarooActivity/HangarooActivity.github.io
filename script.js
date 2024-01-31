@@ -26,12 +26,23 @@ let questionSet = [];
 
 function initializeGame() {
     secretWord = chooseWord();
+    
+    // Check if currentQuestionIndex is within bounds
+    if (currentQuestionIndex >= 0 && currentQuestionIndex < levels[currentLevel].length) {
+        secretWord = chooseWord();
+    } else {
+        // Handle the case where the index is out of bounds (e.g., reset to 0)
+        currentQuestionIndex = 0;
+        secretWord = chooseWord();
+    }
+
     guessWord = Array(secretWord.length).fill("_");
     incorrectGuesses = 0;
     cluesUsed = 0;
     updateDisplay();
-	postQuestion();
+    postQuestion();
 }
+
 
 
 function chooseWord() {
