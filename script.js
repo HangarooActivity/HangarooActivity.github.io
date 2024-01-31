@@ -55,13 +55,20 @@ function updateLetterButtons() {
         const button = document.createElement('button');
         button.innerText = letter;
         button.className = 'button';
-        button.onclick = function() { checkGuess(letter); };
+        button.onclick = function () { checkGuess(letter); };
+        
+        // Disable the button if the letter is already in the container
+        if (guessWord.includes(letter)) {
+            button.disabled = true;
+        }
+
         letterButtonsContainer.appendChild(button);
     }
 
     const clueButton = document.getElementById('clue-button');
-    clueButton.onclick = function() { getClue(); };
+    clueButton.onclick = function () { getClue(); };
 }
+
 function updateGuessButtons() {
     const guessButtons = document.querySelectorAll('.guess-button');
     for (let i = 0; i < guessButtons.length; i++) {
@@ -97,23 +104,38 @@ function checkGuess(guess) {
 
 function getClue() {
     if (cluesUsed < 3 && points >= 25) {
-        const unrevealedIndex = guessWord.findIndex(letter => letter === '_');
-        if (unrevealedIndex !== -1) {
-            const isConsonant = Math.random() < 0.5; 
-            if (isConsonant) {
-                guessWord[unrevealedIndex] = revealConsonant(secretWord[unrevealedIndex]);
-            } else {
-                guessWord[unrevealedIndex] = revealVowel(secretWord[unrevealedIndex]);
+        const unrevealedIndices = guessWord.reduce((indices, letter, index) => {
+            if (letter === '_') {
+                indices.push(index);
             }
+            return indices;
+        }, []);
+
+        if (unrevealedIndices.length > 0) {
+            const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
+            guessWord[randomIndex] = secretWord[randomIndex];
+            unrevealedIndices.forEach(index => {
+                if (index !== randomIndex && secretWord[index] === secretWord[randomIndex]) {
+                    guessWord[index] = secretWord[index];
+                }
+            });
+
             points -= 25;
             cluesUsed++;
             displayMessage(`Clue revealed! You have earned a clue for 25 points.`);
-            updateDisplay(); 
+
+            // Check if all letters have been revealed to move to the next question
+            if (guessWord.indexOf('_') === -1) {
+                setTimeout(() => {
+                    moveNextQuestion();
+                }, 1000);
+            }
         }
     } else {
         const message = cluesUsed >= 3 ? "You've already used all your clues." : "You don't have enough points for a clue.";
         displayMessage(message);
     }
+    updateDisplay();
 }
 
 
