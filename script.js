@@ -73,7 +73,7 @@ function getQuestions(){
 		const hardQlines = hard.split('\n');
 		const expertQlines = expert.split('\n');	
 		//log to console for debugging
-		console.log('Easy file contents:', easyQlines);
+		console.log('Easy file contents:', easyQlines[0]);
 		console.log('Hard file content:', hardQlines);
 		console.log('Expert file content:', expertQlines);
 		
