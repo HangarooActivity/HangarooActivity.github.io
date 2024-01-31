@@ -24,8 +24,8 @@ let changeLevel = 0;
 let difficultyCounter = 0;
 let questionSet = [];
 
-function initializeGame() {
-    postQuestion();
+async function initializeGame() {
+    await postQuestion();
 	secretWord = chooseWord();
 	console.log("current question set: ", questionSet[0]);
     console.log(questionSet);
@@ -319,7 +319,7 @@ function moveNextLevel() {
         // Move to the next level if available
         currentLevel = levelKeys[currentLevelIndex + 1];
         currentQuestionIndex = 0;
-        initializeGame();
+        await initializeGame();
     } else {
         // If it's the last level, display a completion message
         displayMessage("Congratulations! You've completed all levels.");
@@ -337,10 +337,10 @@ function displayMessage(message) {
 function setLevel(level) {
     currentLevel = level;
     currentQuestionIndex = 0;
-    initializeGame();
+    await initializeGame();
 }
 
 
 
 
-initializeGame();
+await initializeGame();
