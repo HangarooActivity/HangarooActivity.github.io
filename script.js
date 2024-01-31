@@ -119,6 +119,7 @@ function splitQuestions(difficulty) {
 	const expertQ = questions[2]; //array of expert questions
 	
 	if (difficulty == "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
+		console.log(easyQ);
 		return easyQ;
 	} else if (difficulty == "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
 		return hardQ;
