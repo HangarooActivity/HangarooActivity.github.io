@@ -337,7 +337,7 @@ function displayMessage(message) {
 function setLevel(level) {
     currentLevel = level;
     currentQuestionIndex = 0;
-    await initializeGame();
+    
 }
 
 
