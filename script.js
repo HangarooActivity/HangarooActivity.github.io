@@ -61,23 +61,29 @@ function chooseWord() {
 }
 
 
-function postQuestion() {
+async function postQuestion() {
+	try {
 	switch (changeLevel) {
 		case 0:
 			currentLevel = "easy"
-			questionSet = splitQuestions("easy"); //pull easy questions
+			questionSet = await splitQuestions("easy"); //pull easy questions
 			console.log(questionSet);
 			console.log(currentLevel);
 			break;
 		case 1:
 			currentLevel = "hard"
-			questionSet = splitQuestions("hard"); //pull hard questions
+			questionSet = await splitQuestions("hard"); //pull hard questions
 			break;
 		case 2:
 			currentLevel = "expert"
-			questionSet = splitQuestions("expert");//pull expert questions
+			questionSet = await splitQuestions("expert");//pull expert questions
 			break;
+		}
+	} catch (error) {
+		console.error("error pulling text file data:", error);
+		throw error;
 	}
+		
 	
 }
 //function that fetches question .txt files from server
