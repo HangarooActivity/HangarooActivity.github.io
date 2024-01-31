@@ -1,10 +1,10 @@
-What does the z-index property control in CSS?/Layering
-What programming language is named after a particular kind of snake?/Python
-What is a free and open-source front-end framework for designing responsive and mobile-first websites?/Bootstrap
-What do you call of the process of fixing errors in a code?/Debugging
-What do you call a piece of software that enhance a web browser’s functionality/Extension
-What programming language that is primarily used for mobile applications?/Java
-What is the JavaScript ArrayBuffer used for?/Raw
-What is the purpose of the JavaScript Proxy object?/Wrapping
-What do you call a group of linked data that are arranged so they can be efficiently retrieved?/Database
-What is the purpose of the float property in CSS?/Positioning
+What does the z-index property control in CSS?
+What programming language is named after a particular kind of snake?
+What is a free and open-source front-end framework for designing responsive and mobile-first websites?
+What do you call of the process of fixing errors in a code?
+What do you call a piece of software that enhance a web browser’s functionality
+What programming language that is primarily used for mobile applications?
+What is the JavaScript ArrayBuffer used for?
+What is the purpose of the JavaScript Proxy object?
+What do you call a group of linked data that are arranged so they can be efficiently retrieved?
+What is the purpose of the float property in CSS?
