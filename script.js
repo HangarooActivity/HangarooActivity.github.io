@@ -113,6 +113,7 @@ function updateDisplay() {
     // Set the inner HTML of wordDisplay to show each guessed letter in a span element
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     
+	//post question based on current question index
 	document.getElementById('question').innerText = questionSet[currentQuestionIndex];
     // Update the letter buttons and points
     updateLetterButtons();
