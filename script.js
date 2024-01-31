@@ -74,7 +74,7 @@ function postQuestion() {
 			questionSet = splitQuestions("expert");//pull expert questions
 			break;
 	}
-	return questionSet;
+	
 }
 //function that fetches question .txt files from server
 async function getQuestions(){
@@ -138,7 +138,7 @@ function updateDisplay() {
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     updateLetterButtons();
     
-    const question = document.getElementById('question-container');
+    document.getElementById('queston').innerText = questionSet[currentQuestionIndex];
     
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
