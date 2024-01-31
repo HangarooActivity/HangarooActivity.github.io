@@ -82,7 +82,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-	font-size: 50%;
+	
 	
 }
 
@@ -98,6 +98,7 @@ body {
     color: #ffffff;
     border: none;
     transition: background-color 0.3s;
+	font-size: 50%;
 }
 
 
