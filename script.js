@@ -270,7 +270,8 @@ function checkGameStatus() {
         if (currentQuestionIndex === levels[currentLevel].length - 1) {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
-            moveNextLevel();
+            changeLevel++;
+			moveNextLevel();
         } else {
             // Move to the next question
             currentQuestionIndex++;
@@ -286,7 +287,8 @@ function checkGameStatus() {
         if (currentQuestionIndex === levels[currentLevel].length - 1) {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
-            moveNextLevel();
+            changeLevel++;
+			moveNextLevel();
         } else {
             // Move to the next question
             currentQuestionIndex++;
