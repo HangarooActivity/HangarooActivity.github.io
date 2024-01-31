@@ -18,22 +18,92 @@ let guessWord = [];
 let incorrectGuesses = 0;
 let points = 0;
 let cluesUsed = 0;
-let currentLevel = "easy";
 let currentQuestionIndex = 0;
+let currentLevel = "";
+let changeLevel = 0;
+let difficultyCounter = 0;
+let questionSet = [];
+
+function initializeGame() {
+    secretWord = chooseWord();
+    guessWord = Array(secretWord.length).fill("_");
+    incorrectGuesses = 0;
+    cluesUsed = 0;
+    updateDisplay();
+}
+
 
 function chooseWord() {
     const levelWords = levels[currentLevel];
     return levelWords[currentQuestionIndex].split("");
 }
 
-function initializeGame() {
-    secretWord = chooseWord();
-    guessWord = Array(secretWord.length).fill("_");
-    incorrectGuesses = 0;
-    points = 0;
-    cluesUsed = 0;
-    updateDisplay();
-	postQuestions();
+function postQuestion () {
+	switch (changeLevel) {
+		case 0:
+			currentLevel = "easy"
+			questionSet = splitQuestions("easy"); //pull easy questions
+			break;
+		case 1:
+			currentLevel = "hard"
+			questionSet = splitQuestions("hard"); //pull hard questions
+			break;
+		case 2:
+			currentLevel = "expert"
+			questionSet = splitQuestions("expert");//pull expert questions
+			break;
+	}
+	return questionSet;
+}
+//function that fetches question .txt files from server
+function getQuestions(){
+	//create promise block
+	Promise.all([
+	//fetch all files from server
+	fetch('/easy.txt').then(x => x.text()),
+	fetch('/hard.txt').then(x => x.text()),
+	fetch('/expert.txt').then(x => x.text())
+	
+	//shorthand function that takes response objects (easy.txt, hard.txt, expert.txt) 
+	//and respectively passes them to parameters easy, hard, expert
+	]).then(([easy, hard, expert]) => { 
+		//declare 3 constant variables with values of respective text files in array form, delimited with next-line (\n) character
+		const easyQlines = easy.split('\n');
+		const hardQlines = hard.split('\n');
+		const expertQlines = expert.split('\n');	
+		//log to console for debugging
+		console.log('Easy file contents:', easyQlines);
+		console.log('Hard file content:', hardQlines);
+		console.log('Expert file content:', expertQlines);
+		
+		//return array of arrays to function caller
+		//use in returning function as:
+		//const questions = getQuestions();
+		//easyLines = questions[0]
+		//hardLines = questions[1]
+		//expertLines = questions[2]
+		//manipulate data from returning function
+		return [easyQlines, hardQlines, expertQlines];
+	}).catch(error => 
+		{console.error("Error fetching questions:", error);}
+	);
+	
+}
+
+//function that returns array of questions based on difficulty parameter
+function splitQuestions(difficulty) {
+	const questions = getQuestions(); //get array of array-type questions
+	const easyQ = questions[0]; //array of easy questions
+	const hardQ= questions[1]; //array of hard questions
+	const expertQ = questions[2]; //array of expert questions
+	
+	if (difficulty == "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
+		return easyQ;
+	} else if (difficulty == "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
+		return hardQ;
+	} else if (difficulty == "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
+		return expertQ;
+	}
 }
 
 function updateDisplay() {
@@ -213,54 +283,7 @@ function setLevel(level) {
     initializeGame();
 }
 
-//function that fetches question .txt files from server
-function getQuestions(){
-	//create promise block
-	Promise.all([
-	//fetch all files from server
-	fetch('/easy.txt').then(x => x.text()),
-	fetch('/hard.txt').then(x => x.text()),
-	fetch('/expert.txt').then(x => x.text())
-	
-	//shorthand function that takes response objects (easy.txt, hard.txt, expert.txt) 
-	//and respectively passes them to parameters easy, hard, expert
-	]).then(([easy, hard, expert]) => { 
-		//declare 3 constant variables with values of respective text files in array form, delimited with next-line (\n) character
-		const easyQlines = easy.split('\n');
-		const hardQlines = hard.split('\n');
-		const expertQlines = expert.split('\n');	
-		//log to console for debugging
-		console.log('Easy file contents:', easyQlines);
-		console.log('Hard file content:', hardQlines);
-		console.log('Expert file content:', expertQlines);
-		
-		//return array of arrays to function caller
-		//use in returning function as:
-		//const questions = getQuestions();
-		//easyLines = questions[0]
-		//hardLines = questions[1]
-		//expertLines = questions[2]
-		//manipulate data from returning function
-		return [easyQlines, hardQlines, expertQlines];
-	})
-	
-}
 
-//function that returns array of questions based on difficulty parameter
-function postQuestions(difficulty) {
-	const questions = getQuestions(); //get array of array-type questions
-	const easyQ = questions[0]; //array of easy questions
-	const hardQ= questions[1]; //array of hard questions
-	const expertQ = questions[2]; //array of expert questions
-	
-	if (difficulty == "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
-		return easyQ;
-	} else if (difficulty == "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
-		return hardQ;
-	} else if (difficulty == "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
-		return expertQ;
-	}
-}
 
 
 initializeGame();
