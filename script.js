@@ -77,23 +77,22 @@ function postQuestion() {
 	return questionSet;
 }
 //function that fetches question .txt files from server
-function getQuestions(){
-	//create promise block
-	Promise.all([
-	//fetch all files from server
-	fetch('/easy.txt').then(x => x.text()),
-	fetch('/hard.txt').then(x => x.text()),
-	fetch('/expert.txt').then(x => x.text())
+async function getQuestions(){
 	
-	//shorthand function that takes response objects (easy.txt, hard.txt, expert.txt) 
-	//and respectively passes them to parameters easy, hard, expert
-	]).then(([easy, hard, expert]) => { 
+	try {
+		const [easy, hard, expert] = await Promise.all([ //fetch all files from server
+			//shorthand function that takes response objects (easy.txt, hard.txt, expert.txt) 
+			//and respectively passes them to parameters easy, hard, expert
+			fetch('/easy.txt').then(x => x.text()),
+			fetch('/hard.txt').then(x => x.text()),
+			fetch('/expert.txt').then(x => x.text())
+	]); 
 		//declare 3 constant variables with values of respective text files in array form, delimited with next-line (\n) character
 		const easyQlines = easy.split('\n');
 		const hardQlines = hard.split('\n');
 		const expertQlines = expert.split('\n');	
 		//log to console for debugging
-		console.log('Easy file contents:', easyQlines[0]);
+		console.log('Easy file contents:', easyQlines);
 		console.log('Hard file content:', hardQlines);
 		console.log('Expert file content:', expertQlines);
 		
@@ -105,26 +104,31 @@ function getQuestions(){
 		//expertLines = questions[2]
 		//manipulate data from returning function
 		return [easyQlines, hardQlines, expertQlines];
-	}).catch(error => 
-		{console.error("Error fetching questions:", error);}
-	);
+	} catch (error) { 
+		console.error("Error fetching questions:", error);
+        throw error; 
+    }
 	
 }
 
 //function that returns array of questions based on difficulty parameter
-function splitQuestions(difficulty) {
-	const questions = getQuestions(); //get array of array-type questions
-	const easyQ = questions[0]; //array of easy questions
-	const hardQ= questions[1]; //array of hard questions
-	const expertQ = questions[2]; //array of expert questions
+async function splitQuestions(difficulty) {
+	try {
+	const questions = await getQuestions(); //get array of array-type questions
+	const [easyQ, hardQ, expertQ] = questions; //get array of questons
 	
-	if (difficulty == "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
+	if (difficulty === "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
 		console.log(easyQ);
 		return easyQ;
-	} else if (difficulty == "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
+	} else if (difficulty === "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
 		return hardQ;
-	} else if (difficulty == "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
+	} else if (difficulty === "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
 		return expertQ;
+	}
+	
+	} catch (error) {
+		console.error("error splitting questions:", error);
+		throw error;
 	}
 }
 
