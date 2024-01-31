@@ -64,15 +64,15 @@ function postQuestion() {
 	switch (changeLevel) {
 		case 0:
 			currentLevel = "easy"
-			questionSet = await splitQuestions("easy"); //pull easy questions
+			questionSet = splitQuestions("easy"); //pull easy questions
 			break;
 		case 1:
 			currentLevel = "hard"
-			questionSet = await splitQuestions("hard"); //pull hard questions
+			questionSet = splitQuestions("hard"); //pull hard questions
 			break;
 		case 2:
 			currentLevel = "expert"
-			questionSet = await splitQuestions("expert");//pull expert questions
+			questionSet = splitQuestions("expert");//pull expert questions
 			break;
 	}
 	
