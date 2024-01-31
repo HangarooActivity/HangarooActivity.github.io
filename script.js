@@ -106,39 +106,51 @@ function splitQuestions(difficulty) {
 	}
 }
 
+// Updates the display of the game, including the guessed word, points, and letter buttons
 function updateDisplay() {
+    // Get the container for displaying the guessed word
     const wordDisplay = document.getElementById('word-display');
+    // Set the inner HTML of wordDisplay to show each guessed letter in a span element
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
+    
+    // Update the letter buttons and points
     updateLetterButtons();
-	
-	const question = document.getElementById('question-container');
-	
     document.getElementById('points').innerText = `Points: ${points}`;
 }
 
+// Updates the letter buttons based on the guessed letters and disables buttons already in the container
 function updateLetterButtons() {
+    // Get the container for letter buttons
     const letterButtonsContainer = document.getElementById('letter-buttons');
+    // Clear existing buttons
     letterButtonsContainer.innerHTML = "";
 
+    // Loop through ASCII codes for A to Z
     for (let i = 65; i <= 90; i++) {
+        // Convert ASCII code to a character (A to Z)
         const letter = String.fromCharCode(i);
+
+        // Create a button element
         const button = document.createElement('button');
-        button.innerText = letter;
-        button.className = 'button';
-        button.onclick = function () { checkGuess(letter); };
-        
+        button.innerText = letter;  // Set button text to the letter
+        button.className = 'button';  // Set class for styling
+        button.onclick = function () { checkGuess(letter); };  // Set click event to check the guessed letter
+
         // Disable the button if the letter is already in the container
         if (guessWord.includes(letter)) {
             button.disabled = true;
         }
 
+        // Append the button to the letterButtonsContainer
         letterButtonsContainer.appendChild(button);
     }
 
+    // Set click event for the clue button
     const clueButton = document.getElementById('clue-button');
     clueButton.onclick = function () { getClue(); };
 }
 
+// Updates the styling of guess buttons based on the number of incorrect guesses
 function updateGuessButtons() {
     const guessButtons = document.querySelectorAll('.guess-button');
     for (let i = 0; i < guessButtons.length; i++) {
@@ -150,6 +162,7 @@ function updateGuessButtons() {
     }
 }
 
+// Checks the guessed letter against the secret word and updates the game state
 function checkGuess(guess) {
     let newGuess = false;
 
@@ -161,19 +174,21 @@ function checkGuess(guess) {
             }
         }
     } else {
-      
         if (!guessWord.includes(guess)) {
             incorrectGuesses++;
         }
     }
 
-    updateDisplay();  
+    // Update the display, guess buttons, and check the game status
+    updateDisplay();
     updateGuessButtons();
     checkGameStatus();
 }
 
+// Provides a clue by revealing a letter in the word
 function getClue() {
     if (cluesUsed < 3 && points >= 25) {
+        // Find indices of unrevealed letters in the guessed word
         const unrevealedIndices = guessWord.reduce((indices, letter, index) => {
             if (letter === '_') {
                 indices.push(index);
@@ -182,14 +197,20 @@ function getClue() {
         }, []);
 
         if (unrevealedIndices.length > 0) {
+            // Randomly choose an unrevealed index
             const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
+            
+            // Set the guessed word at the random index to the corresponding letter in the secret word
             guessWord[randomIndex] = secretWord[randomIndex];
+            
+            // If the secret word has additional occurrences of the revealed letter, also update them
             unrevealedIndices.forEach(index => {
                 if (index !== randomIndex && secretWord[index] === secretWord[randomIndex]) {
                     guessWord[index] = secretWord[index];
                 }
             });
 
+            // Deduct points and increment cluesUsed
             points -= 25;
             cluesUsed++;
             displayMessage(`Clue revealed! You have earned a clue for 25 points.`);
@@ -205,16 +226,19 @@ function getClue() {
         const message = cluesUsed >= 3 ? "You've already used all your clues." : "You don't have enough points for a clue.";
         displayMessage(message);
     }
+
+    // Update the display after getting a clue
     updateDisplay();
 }
 
-
+// Reveals a consonant as a clue
 function revealConsonant(letter) {
     const consonants = "BCDFGHJKLMNPQRSTVWXYZ";
     const remainingConsonants = [...consonants].filter(c => c !== letter);
     return remainingConsonants[Math.floor(Math.random() * remainingConsonants.length)];
 }
 
+// Reveals a vowel as a clue
 function revealVowel(letter) {
     const vowels = "AEIOU";
     const remainingVowels = [...vowels].filter(v => v !== letter);
