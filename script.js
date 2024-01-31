@@ -153,30 +153,53 @@ function revealVowel(letter) {
 
 function checkGameStatus() {
     if (!guessWord.includes('_')) {
-        points += 10; 
+        points += 10;
         displayMessage(`Congratulations! You guessed the word. You earned 10 points.`);
-        currentQuestionIndex++;
-        if (currentQuestionIndex < 10) {
+
+        if (currentQuestionIndex === levels[currentLevel].length - 1) {
+            // If it's the last word for the current level, move to the next level
+            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
+            moveNextLevel();
+        } else {
+            // Move to the next question
+            currentQuestionIndex++;
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
             updateDisplay();
-        } else {
-            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
         }
     } else if (incorrectGuesses >= 3) {
         displayMessage(`Game over! The word was ${secretWord.join('')}. You earned 0 points.`);
-        currentQuestionIndex++;
-        if (currentQuestionIndex < 10) {
+
+        if (currentQuestionIndex === levels[currentLevel].length - 1) {
+            // If it's the last word for the current level, move to the next level
+            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
+            moveNextLevel();
+        } else {
+            // Move to the next question
+            currentQuestionIndex++;
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
             updateDisplay();
-        } else {
-            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
         }
     }
 }
+
+function moveNextLevel() {
+    const levelKeys = Object.keys(levels);
+    const currentLevelIndex = levelKeys.indexOf(currentLevel);
+
+    if (currentLevelIndex < levelKeys.length - 1) {
+        currentLevel = levelKeys[currentLevelIndex + 1];
+        currentQuestionIndex = 0;
+        initializeGame();
+    } else {
+        // If it's the last level, you can handle this case as needed
+        displayMessage("Congratulations! You've completed all levels.");
+    }
+}
+
 
 
 function displayMessage(message) {
