@@ -19,7 +19,7 @@ let incorrectGuesses = 0;
 let points = 0;
 let cluesUsed = 0;
 let currentQuestionIndex = 0;
-let currentLevel = "easy";
+let currentLevel = "";
 let changeLevel = 0;
 let difficultyCounter = 0;
 let questionSet = [];
@@ -30,6 +30,7 @@ function initializeGame() {
     incorrectGuesses = 0;
     cluesUsed = 0;
     updateDisplay();
+	
 }
 
 
@@ -38,7 +39,7 @@ function chooseWord() {
     return levelWords[currentQuestionIndex].split("");
 }
 
-function postQuestion () {
+function postQuestion() {
 	switch (changeLevel) {
 		case 0:
 			currentLevel = "easy"
@@ -108,6 +109,8 @@ function splitQuestions(difficulty) {
 
 // Updates the display of the game, including the guessed word, points, and letter buttons
 function updateDisplay() {
+	//get question set
+	postQuestion();
     // Get the container for displaying the guessed word
     const wordDisplay = document.getElementById('word-display');
     // Set the inner HTML of wordDisplay to show each guessed letter in a span element
