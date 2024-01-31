@@ -158,7 +158,7 @@ function updateLetterButtons() {
         const letter = String.fromCharCode(i);
         const button = document.createElement('button');
         button.innerText = letter;
-        button.className = 'button';
+        button.className = 'letter-buttons';
         button.onclick = function () { checkGuess(letter); };
         
         // Disable the button if the letter is already in the container
