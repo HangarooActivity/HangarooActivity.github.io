@@ -27,7 +27,7 @@ let questionSet = [];
 function initializeGame() {
     postQuestion();
 	secretWord = chooseWord();
-    
+    //comment
     // Check if currentQuestionIndex is within bounds
     if (currentQuestionIndex >= 0 && currentQuestionIndex < levels[currentLevel].length) {
         secretWord = chooseWord();
