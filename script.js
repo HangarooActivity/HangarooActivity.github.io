@@ -36,8 +36,17 @@ function initializeGame() {
 
 function chooseWord() {
     const levelWords = levels[currentLevel];
-    return levelWords[currentQuestionIndex].split("");
+
+    // Check if currentQuestionIndex is within bounds
+    if (currentQuestionIndex >= 0 && currentQuestionIndex < levelWords.length) {
+        return levelWords[currentQuestionIndex].split("");
+    } else {
+        // Handle the case where the index is out of bounds (e.g., reset to 0)
+        currentQuestionIndex = 0;
+        return levelWords[currentQuestionIndex].split("");
+    }
 }
+
 
 function postQuestion() {
 	switch (changeLevel) {
