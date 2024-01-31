@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangaroo Game</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+<div id="question-container" class="question-container">
+    <h2>Question</h2>
+    <div class="question-content">
+        <!-- The current question will be dynamically inserted here -->
+    </div>
+</div>
+
+<div id="guesses-container">
+    <button class="guess-button" id="guess-1">X</button>
+    <button class="guess-button" id="guess-2">X</button>
+    <button class="guess-button" id="guess-3">X</button>
+</div>
+<!--comment-->
+<div id="game-container">
+    <h2>Hangaroo Game</h2>
+    <div id="word-display"></div>
+    <div id="attempts"></div>
+    <div id="letter-buttons"></div>
+    <div id="message"></div>
+    <div id="points">Points: 0</div>
+    <button id="clue-button" class="game-button">Get Clue</button>
+</div>
+
+<!-- Game End Modal -->
+<div id="game-end-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="end-game-message"></h2>
+        <p id="end-game-score"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
