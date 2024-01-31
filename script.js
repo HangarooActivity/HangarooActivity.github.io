@@ -30,7 +30,7 @@ function initializeGame() {
     incorrectGuesses = 0;
     cluesUsed = 0;
     updateDisplay();
-	
+	postQuestion();
 }
 
 
