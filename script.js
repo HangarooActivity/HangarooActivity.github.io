@@ -319,7 +319,7 @@ function moveNextLevel() {
         // Move to the next level if available
         currentLevel = levelKeys[currentLevelIndex + 1];
         currentQuestionIndex = 0;
-        await initializeGame();
+        initializeGame();
     } else {
         // If it's the last level, display a completion message
         displayMessage("Congratulations! You've completed all levels.");
