@@ -4,7 +4,7 @@ What is a free and open-source front-end framework for designing responsive and 
 What do you call of the process of fixing errors in a code?/Debugging
 What do you call a piece of software that enhance a web browser’s functionality/Extension
 What programming language that is primarily used for mobile applications?/Java
-What does "WWW" stand for?/World Wide Web
-Who invented JavaScript?/Brendan Eich
+What is the JavaScript ArrayBuffer used for?/Raw
+What is the purpose of the JavaScript Proxy object?/Wrapping
 What do you call a group of linked data that are arranged so they can be efficiently retrieved?/Database
 What is the purpose of the float property in CSS?/Positioning
