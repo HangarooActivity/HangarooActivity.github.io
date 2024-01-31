@@ -66,6 +66,8 @@ function postQuestion() {
 		case 0:
 			currentLevel = "easy"
 			questionSet = splitQuestions("easy"); //pull easy questions
+			console.log(questionSet);
+			console.log(currentLevel);
 			break;
 		case 1:
 			currentLevel = "hard"
