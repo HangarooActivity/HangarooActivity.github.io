@@ -181,36 +181,32 @@ function updateLetterButtons() {
 }
 
 
-// Function to update the visual representation of incorrect guesses
-function updateGuessButtons() {
-    const guessButtons = document.querySelectorAll('.guess-button');
-    for (let i = 0; i < guessButtons.length; i++) {
-        if (i < incorrectGuesses) {
-            guessButtons[i].classList.add('highlighted');
-        } else {
-            guessButtons[i].classList.remove('highlighted');
+// Function to update the letter buttons for user interaction
+function updateLetterButtons() {
+    const letterButtonsContainer = document.getElementById('letter-buttons');
+    letterButtonsContainer.innerHTML = "";
+
+    // Create buttons for each letter of the alphabet
+    for (let i = 65; i <= 90; i++) {
+        const letter = String.fromCharCode(i);
+        const button = document.createElement('button');
+        button.innerText = letter;
+        button.className = 'letter-buttons';
+        button.onclick = function () { checkGuess(letter); };
+        
+        // Disable the button if the letter is already in the container
+        if (guessWord.includes(letter)) {
+            button.disabled = true;
         }
+
+        letterButtonsContainer.appendChild(button);
     }
+
+    // Add functionality to the clue button
+    const clueButton = document.getElementById('clue-button');
+    clueButton.onclick = function () { getClue(); };
 }
 
-// Function to check the user's guess against the secret word
-function checkGuess(guess) {
-    let newGuess = false;
-
-    // Check if the guessed letter is in the secret word
-    if (secretWord.includes(guess)) {
-        for (let i = 0; i < secretWord.length; i++) {
-            if (secretWord[i] === guess && guessWord[i] !== guess) {
-                guessWord[i] = guess;
-                newGuess = true;
-            }
-        }
-    } else {
-        // Increment incorrect guesses if the letter is not in the secret word
-        if (!guessWord.includes(guess)) {
-            incorrectGuesses++;
-        }
-    }
 
     // Update the display and check the game status
     updateDisplay();  
