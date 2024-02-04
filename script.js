@@ -154,17 +154,20 @@ function updateDisplay() {
     document.getElementById('points').innerText = `Points: ${points}`;
 }
 
+// Function to update the letter buttons for user interaction
 function updateLetterButtons() {
     const letterButtonsContainer = document.getElementById('letter-buttons');
     letterButtonsContainer.innerHTML = "";
 
+    // Create buttons for each letter of the alphabet
     for (let i = 65; i <= 90; i++) {
         const letter = String.fromCharCode(i);
         const button = document.createElement('button');
         button.innerText = letter;
-        button.className = 'button';
+        button.className = 'letter-buttons';
         button.onclick = function () { checkGuess(letter); };
-
+        
+        // Disable the button if the letter is already in the container
         if (guessWord.includes(letter)) {
             button.disabled = true;
         }
@@ -172,6 +175,7 @@ function updateLetterButtons() {
         letterButtonsContainer.appendChild(button);
     }
 
+    // Add functionality to the clue button
     const clueButton = document.getElementById('clue-button');
     clueButton.onclick = function () { getClue(); };
 }
