@@ -167,8 +167,8 @@ function updateLetterButtons() {
         button.className = 'letter-buttons';
         button.onclick = function () { checkGuess(letter); };
         
-        // Disable the button if the letter is already in the container
-        if (guessWord.includes(letter)) {
+        // Disable the button if the letter is already in the container or has been guessed incorrectly
+        if (guessWord.includes(letter) || incorrectGuesses >= 3) {
             button.disabled = true;
         }
 
@@ -179,6 +179,7 @@ function updateLetterButtons() {
     const clueButton = document.getElementById('clue-button');
     clueButton.onclick = function () { getClue(); };
 }
+
 
 // Function to update the visual representation of incorrect guesses
 function updateGuessButtons() {
