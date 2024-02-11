@@ -27,7 +27,7 @@ let questionSet = [];
 async function initializeGame() {
     await postQuestion();
 	secretWord = chooseWord();
-	console.log("current question set: ", questionSet[0]);
+	console.log("current first question: ", questionSet[0]);
     console.log(questionSet);
     // Check if currentQuestionIndex is within bounds
     if (currentQuestionIndex >= 0 && currentQuestionIndex < levels[currentLevel].length) {
@@ -114,17 +114,6 @@ async function splitQuestions(difficulty) {
 	}
 }
 
-// Function to update the display of the game
-function updateDisplay() {
-    const wordDisplay = document.getElementById('word-display');
-    wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
-    updateLetterButtons();
-    
-    const question = document.getElementById('question-container');
-    
-    // Update the points display
-    document.getElementById('points').innerText = `Points: ${points}`;
-}
 
 //function that fetches question .txt files from server
 async function getQuestions(){
@@ -141,10 +130,6 @@ async function getQuestions(){
 		const easyQlines = easy.split('\n');
 		const hardQlines = hard.split('\n');
 		const expertQlines = expert.split('\n');	
-		//log to console for debugging
-		console.log('Easy file contents:', easyQlines);
-		console.log('Hard file content:', hardQlines);
-		console.log('Expert file content:', expertQlines);
 		
 		//return array of arrays to function caller
 		//use in returning function as:
@@ -160,6 +145,21 @@ async function getQuestions(){
     }
 	
 }
+
+// Function to update the display of the game
+function updateDisplay() {
+    const wordDisplay = document.getElementById('word-display');
+    wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
+    updateLetterButtons();
+    
+    const question = document.getElementById('question-container');
+	
+	question.innerHTML = "question placeholder";
+    
+    // Update the points display
+    document.getElementById('points').innerText = `Points: ${points}`;
+}
+
 
 // Function to update the letter buttons for user interaction
 function updateLetterButtons() {
@@ -335,6 +335,9 @@ function moveNextLevel() {
 }
 
 
+function randomizeLevel (){
+	
+}
 
 
 function displayMessage(message) {
