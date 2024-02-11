@@ -23,20 +23,14 @@ let currentLevel = "";
 let changeLevel = 0;
 let difficultyCounter = 0;
 let questionSet = [];
+let questionOrder = [];
 
 async function initializeGame() {
     await postQuestion();
 	secretWord = chooseWord();
-	console.log("current first question: ", questionSet[0]);
-    console.log(questionSet);
-    // Check if currentQuestionIndex is within bounds
-    if (currentQuestionIndex >= 0 && currentQuestionIndex < levels[currentLevel].length) {
-        secretWord = chooseWord();
-    } else {
-        // Handle the case where the index is out of bounds (e.g., reset to 0)
-        currentQuestionIndex = 0;
-        secretWord = chooseWord();
-    }
+	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
+	secretWord = chooseWord(); // choose word to be guessed
+    
 
     guessWord = Array(secretWord.length).fill("_");
     incorrectGuesses = 0;
@@ -152,9 +146,8 @@ function updateDisplay() {
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     updateLetterButtons();
     
-    const question = document.getElementById('question-container');
-	
-	question.innerHTML = "question placeholder";
+    const question = document.getElementById('question-content');
+	question.innerHTML = ;
     
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
@@ -336,6 +329,11 @@ function moveNextLevel() {
 
 
 function randomizeLevel (){
+	let questionIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //index of questions/answers to be picked
+	//randomize questionIndex, store the resulting array value inside questionOrder 
+	questionOrder = randomizedArray;
+	
+	
 	
 }
 
