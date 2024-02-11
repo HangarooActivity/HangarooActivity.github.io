@@ -98,13 +98,13 @@ async function splitQuestions(difficulty) {
 		const [easyQ, hardQ, expertQ] = questions; //get array of questons
 		
 		if (difficulty === "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
-			console.log("return easy q: "easyQ);
+			console.log("return easy q: ", easyQ);
 			return easyQ;
 		} else if (difficulty === "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
-			console.log("return hard q: "hardQ);
+			console.log("return hard q: ", hardQ);
 			return hardQ;
 		} else if (difficulty === "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
-			console.log("return expert q: "expertQ);
+			console.log("return expert q: ", expertQ);
 			return expertQ;
 		}
 	
