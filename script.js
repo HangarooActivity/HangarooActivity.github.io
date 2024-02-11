@@ -335,11 +335,7 @@ function displayMessage(message) {
     document.getElementById('letter-buttons').innerHTML = "";
 }
 
-function setLevel(level) {
-    currentLevel = level;
-    currentQuestionIndex = 0;
-    
-}
+
 
 
 
