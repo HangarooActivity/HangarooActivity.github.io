@@ -67,19 +67,19 @@ async function postQuestion() {
 		case 0:
 			currentLevel = "easy"
 			questionSet = await splitQuestions("easy"); //pull easy questions
-			console.log("easy questions:", questionSet);
+			console.log("easy questions: ", questionSet);
 			console.log("current level: ", currentLevel);
 			break;
 		case 1:
 			currentLevel = "hard"
 			questionSet = await splitQuestions("hard"); //pull hard questions
-			console.log("hard questions:", questionSet);
+			console.log("hard questions: ", questionSet);
 			console.log("current level: ", currentLevel);
 			break;
 		case 2:
 			currentLevel = "expert"
 			questionSet = await splitQuestions("expert");//pull expert questions
-			console.log("expert questions:", questionSet);
+			console.log("expert questions: ", questionSet);
 			console.log("current level: ", currentLevel);
 			break;
 		}
@@ -90,6 +90,42 @@ async function postQuestion() {
 		
 	
 }
+
+//function that returns array of questions based on difficulty parameter
+async function splitQuestions(difficulty) {
+	try {
+		const questions = await getQuestions(); //get array of array-type questions
+		const [easyQ, hardQ, expertQ] = questions; //get array of questons
+		
+		if (difficulty === "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
+			console.log("return easy q: "easyQ);
+			return easyQ;
+		} else if (difficulty === "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
+			console.log("return hard q: "hardQ);
+			return hardQ;
+		} else if (difficulty === "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
+			console.log("return expert q: "expertQ);
+			return expertQ;
+		}
+	
+	} catch (error) {
+		console.error("error splitting questions:", error);
+		throw error;
+	}
+}
+
+// Function to update the display of the game
+function updateDisplay() {
+    const wordDisplay = document.getElementById('word-display');
+    wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
+    updateLetterButtons();
+    
+    const question = document.getElementById('question-container');
+    
+    // Update the points display
+    document.getElementById('points').innerText = `Points: ${points}`;
+}
+
 //function that fetches question .txt files from server
 async function getQuestions(){
 	
@@ -123,39 +159,6 @@ async function getQuestions(){
         throw error; 
     }
 	
-}
-
-//function that returns array of questions based on difficulty parameter
-async function splitQuestions(difficulty) {
-	try {
-	const questions = await getQuestions(); //get array of array-type questions
-	const [easyQ, hardQ, expertQ] = questions; //get array of questons
-	
-	if (difficulty === "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
-		console.log(easyQ);
-		return easyQ;
-	} else if (difficulty === "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
-		return hardQ;
-	} else if (difficulty === "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
-		return expertQ;
-	}
-	
-	} catch (error) {
-		console.error("error splitting questions:", error);
-		throw error;
-	}
-}
-
-// Function to update the display of the game
-function updateDisplay() {
-    const wordDisplay = document.getElementById('word-display');
-    wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
-    updateLetterButtons();
-    
-    const question = document.getElementById('question-container');
-    
-    // Update the points display
-    document.getElementById('points').innerText = `Points: ${points}`;
 }
 
 // Function to update the letter buttons for user interaction
