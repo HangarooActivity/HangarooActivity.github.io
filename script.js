@@ -67,16 +67,20 @@ async function postQuestion() {
 		case 0:
 			currentLevel = "easy"
 			questionSet = await splitQuestions("easy"); //pull easy questions
-			console.log(questionSet);
-			console.log(currentLevel);
+			console.log("easy questions:", questionSet);
+			console.log("current level: ", currentLevel);
 			break;
 		case 1:
 			currentLevel = "hard"
 			questionSet = await splitQuestions("hard"); //pull hard questions
+			console.log("hard questions:", questionSet);
+			console.log("current level: ", currentLevel);
 			break;
 		case 2:
 			currentLevel = "expert"
 			questionSet = await splitQuestions("expert");//pull expert questions
+			console.log("expert questions:", questionSet);
+			console.log("current level: ", currentLevel);
 			break;
 		}
 	} catch (error) {
