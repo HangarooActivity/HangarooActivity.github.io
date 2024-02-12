@@ -30,7 +30,8 @@ async function initializeGame() {
     await postQuestion();
 	secretWord = chooseWord();
 	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
-	randomizeLevel();
+	randomizeLevel(); // randomize question level numbers
+	console.log(indexArray); // console log to check if indexArray values changes
 	secretWord = chooseWord(); // choose word to be guessed
     
 
@@ -344,7 +345,6 @@ function randomizeLevel(){
 				itemNum++;
 			}
 	}
-	console.log(indexArray);	
 }
 
 
