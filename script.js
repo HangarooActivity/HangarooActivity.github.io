@@ -148,7 +148,7 @@ function updateDisplay() {
     updateLetterButtons();
     
     const question = document.getElementById('question-content');
-	question.innerHTML = ;
+	question.innerHTML = "question goes here" ;
     
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
