@@ -45,16 +45,10 @@ async function initializeGame() {
 
 
 function chooseWord() {
-    const levelWords = levels[currentLevel];
-
-    // Check if currentQuestionIndex is within bounds
-    if (currentQuestionIndex >= 0 && currentQuestionIndex < levelWords.length) {
-        return levelWords[currentQuestionIndex].split("");
-    } else {
-        // Handle the case where the index is out of bounds (e.g., reset to 0)
-        currentQuestionIndex = 0;
-        return levelWords[currentQuestionIndex].split("");
-    }
+    const levelWords = levels[currentLevel]; // get set of answers from levels object
+	console.log(levelWords);
+	console.log(levelWords[indexArray[currentQuestionIndex]].split(""));
+	return levelWords[indexArray[currentQuestionIndex]].split(""); // get index of question using the shuffled index order stored in indexArray
 }
 
 
