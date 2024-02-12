@@ -342,9 +342,9 @@ function randomizeLevel(){
 			} else if (itemNum < x) {
 				indexArray.unshift(itemNum);
 				itemNum++;
-		}
-		console.log(indexArray);	
+			}
 	}
+	console.log(indexArray);	
 }
 
 
