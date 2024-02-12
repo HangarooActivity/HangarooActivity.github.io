@@ -24,6 +24,7 @@ let changeLevel = 0;
 let difficultyCounter = 0;
 let questionSet = [];
 let questionOrder = [];
+let indexArray = [];
 
 async function initializeGame() {
     await postQuestion();
@@ -329,12 +330,20 @@ function moveNextLevel() {
 
 
 function randomizeLevel (){
-	let questionIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //index of questions/answers to be picked
 	//randomize questionIndex, store the resulting array value inside questionOrder 
-	questionOrder = randomizedArray;
+	itemNum = 0;
 	
-	
-	
+	while (itemNum<= 9){
+	let x = Math.random() * 10;
+		if (item > x){
+			indexArray.push(itemNum);
+			item++;
+		} else if (item < x) {
+			indexArray.unshift(itemNum);
+			item++;
+	}
+	console.log(indexArray);	
+	}
 }
 
 
