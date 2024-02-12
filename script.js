@@ -335,15 +335,15 @@ function randomizeLevel(){
 	itemNum = 0;
 	
 	while (itemNum<= 9){
-	let x = Math.random() * 10;
-		if (item > x){
-			indexArray.push(itemNum);
-			item++;
-		} else if (item < x) {
-			indexArray.unshift(itemNum);
-			item++;
-	}
-	console.log(indexArray);	
+		let x = Math.random() * 10;
+			if (itemNum > x){
+				indexArray.push(itemNum);
+				itemNum++;
+			} else if (itemNum < x) {
+				indexArray.unshift(itemNum);
+				itemNum++;
+		}
+		console.log(indexArray);	
 	}
 }
 
