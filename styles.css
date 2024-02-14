@@ -20,8 +20,8 @@ body {
 }
 
 .guess-button {
-    width: 4vw;
-    height: 4vh;
+    width: 7vw;
+    height: 5vh;
     line-height: 5vh;
     border-radius: 10px;
     margin: 1vw;
@@ -29,7 +29,7 @@ body {
 }
 
 #game-container {
-    width: 80vw;
+    width: 70vw;
     background-color: rgb(227, 148, 3);
     padding: 2vh;
     border-radius: 2vh;
@@ -68,7 +68,7 @@ body {
 }
 
 .letter-button {
-    width: 3vw;
+    width: 5vw;
     height: 3vw;
     line-height: 4vw;
     border-radius: 0.8vw;
@@ -77,8 +77,8 @@ body {
 }
 
 .game-button {
-    width: 3vw;
-    height: 3vw;
+    width: 4vw;
+    height: 4vw;
     line-height: 4vw;
     border-radius: 1vw;
     margin: 0.5vw;
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 3vw; 
-    height: 3vw; 
+    width: 5vw; 
+    height: 4vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
