@@ -64,7 +64,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 1vw;
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .letter-button {
@@ -148,7 +148,7 @@ body {
 }
 
 .button {
-    font-size: 1.2vw;
+    font-size: 3vw;
 }
 
 .keyboard-row {
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 3vw; 
-    height: 3vw; 
-    margin: 0.3vw; 
-    font-size: 1.5vw; 
+    width: 4vw; 
+    height: 4vw; 
+    margin: 0.5vw; 
+    font-size: 2vw; 
 }
