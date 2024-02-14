@@ -10,9 +10,6 @@ const levels = {
     ]
 };
 
-
-
-
 let secretWord = "";
 let guessWord = [];
 let incorrectGuesses = 0;
@@ -30,7 +27,6 @@ async function initializeGame() {
     await postQuestion();
 	randomizeLevel(); // randomize question level numbers
 	console.log(indexArray); // console log to check if indexArray values changes
-	secretWord = chooseWord();
 	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
 	secretWord = chooseWord(); // choose word to be guessed
     guessWord = Array(secretWord.length).fill("_");
@@ -39,15 +35,12 @@ async function initializeGame() {
     updateDisplay();
 }
 
-
-
 function chooseWord() {
     const levelWords = levels[currentLevel]; // get set of answers from levels object
 	console.log(levelWords);
 	console.log(levelWords[indexArray[currentQuestionIndex]].split(""));
 	return levelWords[indexArray[currentQuestionIndex]].split(""); // get index of question using the shuffled index order stored in indexArray
 }
-
 
 async function postQuestion() {
 	try {
@@ -102,7 +95,6 @@ async function splitQuestions(difficulty) {
 	}
 }
 
-
 //function that fetches question .txt files from server
 async function getQuestions(){
 	
@@ -146,7 +138,6 @@ function updateDisplay() {
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
 }
-
 
 // Function to update the letter buttons for user interaction
 function updateLetterButtons() {
@@ -210,7 +201,6 @@ function checkGuess(guess) {
     updateGuessButtons();
     checkGameStatus();
 }
-
 
 // Function to provide a clue to the user
 function getClue() {
@@ -321,7 +311,6 @@ function moveNextLevel() {
     }
 }
 
-
 function randomizeLevel(){
 	//randomize questionIndex, store the resulting array value inside questionOrder 
 	itemNum = 0;
@@ -338,15 +327,9 @@ function randomizeLevel(){
 	}
 }
 
-
 function displayMessage(message) {
     document.getElementById('message').innerText = message;
     document.getElementById('letter-buttons').innerHTML = "";
 }
-
-
-
-
-
 
 initializeGame();
