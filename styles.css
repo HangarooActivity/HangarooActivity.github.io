@@ -68,8 +68,8 @@ body {
 }
 
 .letter-button {
-    width: 2vw;
-    height: 2vw;
+    width: 7vw;
+    height: 3vw;
     line-height: 2vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
@@ -77,9 +77,9 @@ body {
 }
 
 .game-button {
-    width: 2vw;
-    height: 2vw;
-    line-height: 2vw;
+    width: 3vw;
+    height: 3vw;
+    line-height: 3vw;
     border-radius: 1vw;
     margin: 0.5vw;
     padding: 0;
@@ -148,7 +148,7 @@ body {
 }
 
 .button {
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .keyboard-row {
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 2vw; 
-    height: 2vw; 
+    width: 3vw; 
+    height: 3vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
