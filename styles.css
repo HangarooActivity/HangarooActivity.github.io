@@ -63,7 +63,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5vw;
+    gap: 1vw;
     font-size: 1vw;
 }
 
