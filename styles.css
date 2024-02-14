@@ -29,7 +29,7 @@ body {
 }
 
 #game-container {
-    width: 70vw;
+    width: 80vw;
     background-color: rgb(227, 148, 3);
     padding: 2vh;
     border-radius: 2vh;
@@ -68,8 +68,8 @@ body {
 }
 
 .letter-button {
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
     line-height: 2vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
@@ -77,8 +77,8 @@ body {
 }
 
 .game-button {
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
     line-height: 3vw;
     border-radius: 1vw;
     margin: 0.5vw;
@@ -159,8 +159,8 @@ body {
 
 .button {
 
-    width: 3vw; 
-    height: 3vw; 
+    width: 2vw; 
+    height: 2vw; 
     margin: 1vw; 
     font-size: 1vw; 
 }
