@@ -64,22 +64,22 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.5vw;
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .letter-button {
-    width: 3vw;
-    height: 3vw;
-    line-height: 3vw;
+    width: 2vw;
+    height: 2vw;
+    line-height: 2vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .game-button {
-    width: 3vw;
-    height: 3vw;
-    line-height: 3vw;
+    width: 2vw;
+    height: 2vw;
+    line-height: 2vw;
     border-radius: 1vw;
     margin: 0.5vw;
     padding: 0;
@@ -148,7 +148,7 @@ body {
 }
 
 .button {
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .keyboard-row {
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 3vw; 
-    height: 3vw; 
+    width: 2vw; 
+    height: 2vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
