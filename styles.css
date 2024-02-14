@@ -148,7 +148,7 @@ body {
 }
 
 .button {
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .keyboard-row {
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 7vw; 
-    height: 4vw; 
+    width: 2vw; 
+    height: 2vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
