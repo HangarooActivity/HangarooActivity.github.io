@@ -65,12 +65,11 @@ body {
     flex-wrap: wrap;
     gap: 0.5vw;
     font-size: 3vw;
-	border-radius: 0.5px;
 }
 
 .letter-button {
-    width: 5vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
     line-height: 4vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
@@ -78,8 +77,8 @@ body {
 }
 
 .game-button {
-    width: 5vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
     line-height: 4vw;
     border-radius: 1vw;
     margin: 0.5vw;
@@ -149,7 +148,7 @@ body {
 }
 
 .button {
-    font-size: 5vw;
+    font-size: 3vw;
 }
 
 .keyboard-row {
