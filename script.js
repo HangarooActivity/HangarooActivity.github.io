@@ -133,8 +133,8 @@ function updateDisplay() {
     updateLetterButtons();
     
     const question = document.getElementById('question-content');
-	question.innerHTML = "question goes here" ;
-    
+	question.innerHTML = questionSet[indexArray[currentQuestionIndex]]; // post question at set index from indexArray's shuffle
+	
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
 }
