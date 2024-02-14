@@ -63,14 +63,14 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.7vw;
+    gap: 0.5vw;
     font-size: 3vw;
-	border-radius: 0.5vw;
+	border-radius: 0.5px;
 }
 
 .letter-button {
-    width: 3vw;
-    height: 3vw;
+    width: 5vw;
+    height: 4vw;
     line-height: 4vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
