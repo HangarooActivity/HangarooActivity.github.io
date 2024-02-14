@@ -158,8 +158,16 @@ body {
 }
 
 .button {
+
     width: 2vw; 
     height: 2vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
+=======
+    width: 3vw; 
+    height: 3vw; 
+    margin: 0.3vw; 
+    font-size: 1.5vw; 
+}
+
