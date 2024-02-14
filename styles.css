@@ -68,7 +68,7 @@ body {
 }
 
 .letter-button {
-    width: 7vw;
+    width: 3vw;
     height: 3vw;
     line-height: 2vw;
     border-radius: 0.8vw;
@@ -158,8 +158,8 @@ body {
 }
 
 .button {
-    width: 3vw; 
-    height: 3vw; 
+    width: 7vw; 
+    height: 4vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
