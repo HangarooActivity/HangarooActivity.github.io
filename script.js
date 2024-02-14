@@ -28,18 +28,15 @@ let indexArray = [];
 
 async function initializeGame() {
     await postQuestion();
-	secretWord = chooseWord();
-	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
 	randomizeLevel(); // randomize question level numbers
 	console.log(indexArray); // console log to check if indexArray values changes
+	secretWord = chooseWord();
+	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
 	secretWord = chooseWord(); // choose word to be guessed
-    
-
     guessWord = Array(secretWord.length).fill("_");
     incorrectGuesses = 0;
     cluesUsed = 0;
     updateDisplay();
-    
 }
 
 
