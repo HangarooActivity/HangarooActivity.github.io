@@ -65,12 +65,12 @@ body {
     flex-wrap: wrap;
     gap: 1vw;
     font-size: 3vw;
-    border-radius: 10vw;
+    border-radius: 1vw;
 }
 
 .letter-button {
-    width: 4vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
     line-height: 4vw;
     border-radius: 0.8vw;
     margin: 0.5vw;
@@ -78,8 +78,8 @@ body {
 }
 
 .game-button {
-    width: 8vw;
-    height: 4vw;
+    width: 10vw;
+    height: 5vw;
     line-height: 4vw;
     border-radius: 1vw;
     margin: 0.5vw;
@@ -88,7 +88,7 @@ body {
 }
 
 #message {
-    font-size: 1.8vw;
+    font-size: 2vw;
     margin-top: 1vw;
 }
 
@@ -149,7 +149,7 @@ body {
 }
 
 .button {
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .keyboard-row {
@@ -159,8 +159,8 @@ body {
 }
 
 .button {
-    width: 4vw; 
-    height: 4vw; 
+    width: 3vw; 
+    height: 3vw; 
     margin: 1vw; 
     font-size: 2vw; 
 }
