@@ -1,6 +1,8 @@
 body {
     font-family: 'Arial', sans-serif;
     background: url(kg.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
     margin: 0;
     display: flex;
