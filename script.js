@@ -266,6 +266,7 @@ function checkGameStatus() {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
             changeLevel++;
+			indexArray = [];
 			moveNextLevel();
         } else {
             // Move to the next question
@@ -283,6 +284,7 @@ function checkGameStatus() {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
             changeLevel++;
+			indexArray = [];
 			moveNextLevel();
         } else {
             // Move to the next question
