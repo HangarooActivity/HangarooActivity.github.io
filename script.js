@@ -2,11 +2,11 @@ const levels = {
     easy: [
         "TADPOLE", "LION", "MANILA", "SPIDERS", "SKULL", "THREE", "MILK", "PACIFIC", "SKIN", "SAMPAGUITA"
     ],
-    hard: [
-        "LAYERING", "PYTHON", "BOOTSTRAP", "DEBUGGING", "EXTENSION", "JAVA", "RAW", "WRAPPING", "DATABASE", "POSITIONING"
+    difficult: [
+        "PYTHON", "JAVASCRIPT", "HTML", "CSS", "DATABASE", "FRAMEWORK", "DEVELOPMENT", "INTERFACE", "CODING", "DEBUGGING"
     ],
     expert: [
-        "ITERATION", "ASYNCHRONOUS", "INHERITANCE", "REACT", "KOTLIN", "AGILE", "NOTIFICATION", "WRAPPING", "UNSIGNED", "PLACEHOLDER"
+        "EXTRAVAGANZA", "JUBILATION", "QUINTESSENTIAL", "SERENDIPITY", "ELOQUENT", "EFFERVESCENT", "MAGNIFICENT", "PHENOMENAL", "QUINTESSENTIAL", "PERSEVERANCE"
     ]
 };
 
@@ -18,166 +18,46 @@ let guessWord = [];
 let incorrectGuesses = 0;
 let points = 0;
 let cluesUsed = 0;
+let currentLevel = "easy";
 let currentQuestionIndex = 0;
-let currentLevel = "";
-let changeLevel = 0;
-let difficultyCounter = 0;
-let questionSet = [];
-let questionOrder = [];
-let indexArray = [];
-
-async function initializeGame() {
-    await postQuestion();
-	secretWord = chooseWord();
-	console.log(questionSet); // console log to check if question was imported properly. this will log the easy questions on startup.
-	randomizeLevel(); // randomize question level numbers
-	console.log(indexArray); // console log to check if indexArray values changes
-	secretWord = chooseWord(); // choose word to be guessed
-    
-
-    guessWord = Array(secretWord.length).fill("_");
-    incorrectGuesses = 0;
-    cluesUsed = 0;
-    updateDisplay();
-    
-}
-
-
 
 function chooseWord() {
-    const levelWords = levels[currentLevel]; // get set of answers from levels object
-	console.log(levelWords);
-	console.log(levelWords[indexArray[currentQuestionIndex]].split(""));
-	return levelWords[indexArray[currentQuestionIndex]].split(""); // get index of question using the shuffled index order stored in indexArray
+    const levelWords = levels[currentLevel];
+    return levelWords[currentQuestionIndex].split("");
 }
 
-
-async function postQuestion() {
-	try {
-	switch (changeLevel) {
-		case 0:
-			currentLevel = "easy"
-			questionSet = await splitQuestions("easy"); //pull easy questions
-			console.log("easy questions: ", questionSet);
-			console.log("current level: ", currentLevel);
-			break;
-		case 1:
-			currentLevel = "hard"
-			questionSet = await splitQuestions("hard"); //pull hard questions
-			console.log("hard questions: ", questionSet);
-			console.log("current level: ", currentLevel);
-			break;
-		case 2:
-			currentLevel = "expert"
-			questionSet = await splitQuestions("expert");//pull expert questions
-			console.log("expert questions: ", questionSet);
-			console.log("current level: ", currentLevel);
-			break;
-		}
-	} catch (error) {
-		console.error("error pulling text file data:", error);
-		throw error;
-	}
-		
-	
+function initializeGame() {
+    secretWord = chooseWord();
+    guessWord = Array(secretWord.length).fill("_");
+    incorrectGuesses = 0;
+    points = 0;
+    cluesUsed = 0;
+    updateDisplay();
 }
 
-//function that returns array of questions based on difficulty parameter
-async function splitQuestions(difficulty) {
-	try {
-		const questions = await getQuestions(); //get array of array-type questions
-		const [easyQ, hardQ, expertQ] = questions; //get array of questons
-		
-		if (difficulty === "easy"){ //if the parameter's value is "easy" when this function is called, return array of easy questions
-			console.log("return easy q: ", easyQ);
-			return easyQ;
-		} else if (difficulty === "hard"){ //if the parameter's value is "hard" when this function is called, return array of hard questions 
-			console.log("return hard q: ", hardQ);
-			return hardQ;
-		} else if (difficulty === "expert"){ //if the parameter's value is "expert" when this function is called, return array of expert questions
-			console.log("return expert q: ", expertQ);
-			return expertQ;
-		}
-	
-	} catch (error) {
-		console.error("error splitting questions:", error);
-		throw error;
-	}
-}
-
-
-//function that fetches question .txt files from server
-async function getQuestions(){
-	
-	try {
-		const [easy, hard, expert] = await Promise.all([ //fetch all files from server
-			//shorthand function that takes response objects (easy.txt, hard.txt, expert.txt) 
-			//and respectively passes them to parameters easy, hard, expert
-			fetch('/easy.txt').then(x => x.text()),
-			fetch('/hard.txt').then(x => x.text()),
-			fetch('/expert.txt').then(x => x.text())
-	]); 
-		//declare 3 constant variables with values of respective text files in array form, delimited with next-line (\n) character
-		const easyQlines = easy.split('\n');
-		const hardQlines = hard.split('\n');
-		const expertQlines = expert.split('\n');	
-		
-		//return array of arrays to function caller
-		//use in returning function as:
-		//const questions = getQuestions();
-		//easyLines = questions[0]
-		//hardLines = questions[1]
-		//expertLines = questions[2]
-		//manipulate data from returning function
-		return [easyQlines, hardQlines, expertQlines];
-	} catch (error) { 
-		console.error("Error fetching questions:", error);
-        throw error; 
-    }
-	
-}
-
-// Function to update the display of the game
 function updateDisplay() {
     const wordDisplay = document.getElementById('word-display');
     wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
     updateLetterButtons();
-    
-    const question = document.getElementById('question-content');
-	question.innerHTML = "question goes here" ;
-    
-    // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
 }
 
-
-// Function to update the letter buttons for user interaction
 function updateLetterButtons() {
     const letterButtonsContainer = document.getElementById('letter-buttons');
     letterButtonsContainer.innerHTML = "";
 
-    // Create buttons for each letter of the alphabet
     for (let i = 65; i <= 90; i++) {
         const letter = String.fromCharCode(i);
         const button = document.createElement('button');
         button.innerText = letter;
         button.className = 'button';
-        button.onclick = function () { checkGuess(letter); };
-        
-        // Disable the button if the letter is already in the container
-        if (guessWord.includes(letter)) {
-            button.disabled = true;
-        }
-
+        button.onclick = function() { checkGuess(letter); };
         letterButtonsContainer.appendChild(button);
     }
 
-    // Add functionality to the clue button
     const clueButton = document.getElementById('clue-button');
-    clueButton.onclick = function () { getClue(); };
+    clueButton.onclick = function() { getClue(); };
 }
-
-// Function to update the visual representation of incorrect guesses
 function updateGuessButtons() {
     const guessButtons = document.querySelectorAll('.guess-button');
     for (let i = 0; i < guessButtons.length; i++) {
@@ -189,11 +69,9 @@ function updateGuessButtons() {
     }
 }
 
-// Function to check the user's guess against the secret word
 function checkGuess(guess) {
     let newGuess = false;
 
-    // Check if the guessed letter is in the secret word
     if (secretWord.includes(guess)) {
         for (let i = 0; i < secretWord.length; i++) {
             if (secretWord[i] === guess && guessWord[i] !== guess) {
@@ -202,143 +80,76 @@ function checkGuess(guess) {
             }
         }
     } else {
-        // Increment incorrect guesses if the letter is not in the secret word
+      
         if (!guessWord.includes(guess)) {
             incorrectGuesses++;
         }
     }
 
-    // Update the display and check the game status
     updateDisplay();  
     updateGuessButtons();
     checkGameStatus();
 }
 
-
-// Function to provide a clue to the user
 function getClue() {
     if (cluesUsed < 3 && points >= 25) {
-        const unrevealedIndices = guessWord.reduce((indices, letter, index) => {
-            if (letter === '_') {
-                indices.push(index);
+        const unrevealedIndex = guessWord.findIndex(letter => letter === '_');
+        if (unrevealedIndex !== -1) {
+            const isConsonant = Math.random() < 0.5; 
+            if (isConsonant) {
+                guessWord[unrevealedIndex] = revealConsonant(secretWord[unrevealedIndex]);
+            } else {
+                guessWord[unrevealedIndex] = revealVowel(secretWord[unrevealedIndex]);
             }
-            return indices;
-        }, []);
-
-        if (unrevealedIndices.length > 0) {
-            // Randomly reveal a letter in the word as a clue
-            const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
-            guessWord[randomIndex] = secretWord[randomIndex];
-            unrevealedIndices.forEach(index => {
-                if (index !== randomIndex && secretWord[index] === secretWord[randomIndex]) {
-                    guessWord[index] = secretWord[index];
-                }
-            });
-
             points -= 25;
             cluesUsed++;
             displayMessage(`Clue revealed! You have earned a clue for 25 points.`);
-
-            // Check if all letters have been revealed to move to the next question
-            if (guessWord.indexOf('_') === -1) {
-                setTimeout(() => {
-                    moveNextQuestion();
-                }, 1000);
-            }
+            updateDisplay(); 
         }
     } else {
-        // Display a message if the user cannot get a clue
         const message = cluesUsed >= 3 ? "You've already used all your clues." : "You don't have enough points for a clue.";
         displayMessage(message);
     }
-    updateDisplay();
 }
 
-// Function to reveal a consonant given a letter
+
 function revealConsonant(letter) {
     const consonants = "BCDFGHJKLMNPQRSTVWXYZ";
     const remainingConsonants = [...consonants].filter(c => c !== letter);
     return remainingConsonants[Math.floor(Math.random() * remainingConsonants.length)];
 }
 
-// Function to reveal a vowel given a letter
 function revealVowel(letter) {
     const vowels = "AEIOU";
     const remainingVowels = [...vowels].filter(v => v !== letter);
     return remainingVowels[Math.floor(Math.random() * remainingVowels.length)];
 }
 
-// Function to check the game status (win, lose, or continue)
 function checkGameStatus() {
     if (!guessWord.includes('_')) {
-        // Update points and display a message for a correct guess
-        points += 10;
+        points += 10; 
         displayMessage(`Congratulations! You guessed the word. You earned 10 points.`);
-
-        if (currentQuestionIndex === levels[currentLevel].length - 1) {
-            // If it's the last word for the current level, move to the next level
-            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
-            changeLevel++;
-			moveNextLevel();
-        } else {
-            // Move to the next question
-            currentQuestionIndex++;
+        currentQuestionIndex++;
+        if (currentQuestionIndex < 10) {
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
             updateDisplay();
+        } else {
+            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
         }
     } else if (incorrectGuesses >= 3) {
-        // Display a message for game over
         displayMessage(`Game over! The word was ${secretWord.join('')}. You earned 0 points.`);
-
-        if (currentQuestionIndex === levels[currentLevel].length - 1) {
-            // If it's the last word for the current level, move to the next level
-            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
-            changeLevel++;
-			moveNextLevel();
-        } else {
-            // Move to the next question
-            currentQuestionIndex++;
+        currentQuestionIndex++;
+        if (currentQuestionIndex < 10) {
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
             updateDisplay();
+        } else {
+            displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
         }
     }
-}
-
-// Function to move to the next game level
-function moveNextLevel() {
-    const levelKeys = Object.keys(levels);
-    const currentLevelIndex = levelKeys.indexOf(currentLevel);
-
-    if (currentLevelIndex < levelKeys.length - 1) {
-        // Move to the next level if available
-        currentLevel = levelKeys[currentLevelIndex + 1];
-        currentQuestionIndex = 0;
-        initializeGame();
-    } else {
-        // If it's the last level, display a completion message
-        displayMessage("Congratulations! You've completed all levels.");
-    }
-}
-
-
-function randomizeLevel(){
-	//randomize questionIndex, store the resulting array value inside questionOrder 
-	itemNum = 0;
-	
-	while (itemNum<= 9){
-		let x = Math.random() * 10;
-			if (itemNum > x){
-				indexArray.push(itemNum);
-				itemNum++;
-			} else if (itemNum < x) {
-				indexArray.unshift(itemNum);
-				itemNum++;
-			}
-	}
 }
 
 
@@ -347,9 +158,11 @@ function displayMessage(message) {
     document.getElementById('letter-buttons').innerHTML = "";
 }
 
-
-
-
+function setLevel(level) {
+    currentLevel = level;
+    currentQuestionIndex = 0;
+    initializeGame();
+}
 
 
 initializeGame();
