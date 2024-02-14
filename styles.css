@@ -14,104 +14,103 @@ body {
 #guesses-container {
     display: flex;
     justify-content: center;
-    margin-top: 2vh;
+    margin-top: 1.5vh;
 }
 
 .guess-button {
-    width: 10vw;
-    height: 8vh;
-    line-height: 8vh;
-    border-radius: 16px;
-    margin: 1.5vw;
-    font-size: 3vw;
+    width: 7vw;
+    height: 5vh;
+    line-height: 5vh;
+    border-radius: 10px;
+    margin: 1vw;
+    font-size: 2vw;
 }
 
 #game-container {
-    max-width: 90%;
+    width: 70vw;
     background-color: rgb(227, 148, 3);
-    padding: 4vh;
-    border-radius: 2.5vh;
+    padding: 2vh;
+    border-radius: 2vh;
     color: #ffffff;
     margin: 2vh auto;
-    font-size: 3.6vh;
-    overflow: hidden; /* Hide overflowing content */
+    font-size: 2.5vh;
 }
 
 #word-display {
-    font-size: 3vw;
-    margin-bottom: 2vw;
+    font-size: 1.8vw;
+    margin-bottom: 1vw;
     display: flex;
     justify-content: center;
 }
 
 #word-display span {
-    width: 8vw;
-    height: 8vw;
-    line-height: 8vw;
-    border-radius: 1.6vw;
-    margin: 0 1.5vw;
-    font-size: 5vw;
+    width: 4vw;
+    height: 4vw;
+    line-height: 4vw;
+    border-radius: 0.8vw;
+    margin: 0 0.5vw;
+    font-size: 3vw;
 }
 
 #attempts {
-    font-size: 2.4vh;
-    margin-bottom: 2vh;
+    font-size: 1.2vh;
+    margin-bottom: 1vh;
 }
 
 #letter-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2vw;
-    font-size: 6vw;
+    gap: 1vw;
+    font-size: 2vw;
 }
 
 .letter-button {
-    width: 8vw;
-    height: 8vw;
-    line-height: 8vw;
-    border-radius: 1.6vw;
-    margin: 1.5vw;
-    font-size: 6vw;
+    width: 4vw;
+    height: 4vw;
+    line-height: 4vw;
+    border-radius: 0.8vw;
+    margin: 0.5vw;
+    font-size: 3vw;
 }
 
 .game-button {
-    width: 15vw;
-    height: 8vw;
-    line-height: 8vw;
-    border-radius: 1.6vw;
-    margin: 1.5vw;
+    width: 8vw;
+    height: 4vw;
+    line-height: 4vw;
+    border-radius: 0.8vw;
+    margin: 0.5vw;
     padding: 0;
-    font-size: 2.4vw;
+    font-size: 1.2vw;
 }
 
 #message {
-    font-size: 3vw;
-    margin-top: 2vw;
+    font-size: 1.8vw;
+    margin-top: 1vw;
 }
 
 .question-container {
     background-color: #F1FEA5;
-    padding: 2vw;
-    border: solid 0.3vw #000000;
-    border-radius: 1vw;
+    padding: 1vw;
+    border: solid 0.1vw #000000;
+    border-radius: 0.5vw;
     color: #000000;
     text-align: center;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    width: 80%;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    width: 60vw;
     margin-left: auto;
     margin-right: auto;
 }
 
 .question-container h2 {
-    font-size: 5.8vh;
-    margin-bottom: 1.5vh;
+    font-size: 3vh;
+    margin-bottom: 0.5vh;
 }
 
 .question-content {
-    font-size: 5vw;
-    line-height: 1.6;
+    font-size: 1.8vw;
+    line-height: 1.2;
 }
 
 .modal-content {
@@ -119,16 +118,16 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 2vw;
-    border-radius: 1vw;
+    padding: 1vw;
+    border-radius: 0.5vw;
     text-align: center;
 }
 
 .close {
     position: absolute;
-    top: 1vw;
-    right: 1vw;
-    font-size: 2vw;
+    top: 0.5vw;
+    right: 0.5vw;
+    font-size: 1vw;
     cursor: pointer;
 }
 
@@ -139,9 +138,26 @@ body {
 
 .close {
     position: absolute;
-    top: 1vw;
-    right: 1vw;
-    font-size: 2vw;
+    top: 0.5vw;
+    right: 0.5vw;
+    font-size: 1vw;
     cursor: pointer;
     display: none; /* Hide the close button "x" */
+}
+
+.button {
+    font-size: 1.2vw;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5vw; /* Adjust as needed */
+}
+
+.button {
+    width: 3vw; /* Adjust as needed */
+    height: 3vw; /* Adjust as needed */
+    margin: 0.3vw; /* Adjust as needed */
+    font-size: 1.5vw; /* Adjust as needed */
 }
