@@ -20,9 +20,9 @@ body {
 }
 
 .guess-button {
-    width: 7vw;
-    height: 5vh;
-    line-height: 5vh;
+    width: 4vw;
+    height: 4vh;
+    line-height: 4vh;
     border-radius: 10px;
     margin: 1vw;
     font-size: 2vw;
