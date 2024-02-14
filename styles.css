@@ -152,12 +152,12 @@ body {
 .keyboard-row {
     display: flex;
     justify-content: center;
-    margin-bottom: 0.5vw; /* Adjust as needed */
+    margin-bottom: 0.5vw; 
 }
 
 .button {
-    width: 3vw; /* Adjust as needed */
-    height: 3vw; /* Adjust as needed */
-    margin: 0.3vw; /* Adjust as needed */
-    font-size: 1.5vw; /* Adjust as needed */
+    width: 3vw; 
+    height: 3vw; 
+    margin: 0.3vw; 
+    font-size: 1.5vw; 
 }
