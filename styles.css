@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background: url(kangaroo.gif);
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
     margin: 0;
@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden; /* Prevent scrolling on small screens */
+    overflow: hidden; 
 }
 
 #guesses-container {
