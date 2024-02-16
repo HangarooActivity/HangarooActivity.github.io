@@ -274,6 +274,7 @@ function checkGameStatus() {
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
+	    updateGuessButtons();
             updateDisplay();
         }
     } else if (incorrectGuesses >= 3) {
