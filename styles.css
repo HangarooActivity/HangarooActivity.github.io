@@ -164,10 +164,18 @@ body {
     margin: 1vw; 
     font-size: 1vw; 
 }
+/*
 =======
     width: 3vw; 
     height: 3vw; 
     margin: 0.3vw; 
     font-size: 1.5vw; 
+}
+
+*/
+
+.highlighted {
+background-color: #FF0000;
+border-color: #FFFFFF;
 }
 
