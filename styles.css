@@ -58,23 +58,24 @@ body {
     font-size: 1.2vh;
     margin-bottom: 1vh;
 }
-
-#letter-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5vw;
-    font-size: 1vw;
-}
-
 .letter-button {
-    width: 5vw;
-    height: 5vw;
-    line-height: 2vw;
-    border-radius: 10vw;
-    margin: 0.3vw;
-    font-size: 2vw;
-}
+    width: 4vw; 
+    height: 4vw; 
+    margin: 0.3vw; 
+    font-size: 3vw; 
+    border-radius: 13px;
+    background-color: #007bff; 
+    color: #fff; 
+    border: 2px solid #000; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .letter-button:hover {
+    background-color: #ffc107; 
+    color: #000; 
+  }
+
 
 .game-button {
     width: 9vw;
