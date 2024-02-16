@@ -37,6 +37,23 @@ body {
     margin: 2vh auto;
     font-size: 2.5vh;
 }
+.letter-buttons {
+    width: 4vw; 
+    height: 4vw; 
+    margin: 0.3vw; 
+    font-size: 3vw; 
+    border-radius: 13px;
+    background-color: #007bff; 
+    color: #fff; 
+    border: 2px solid #000; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .letter-button:hover {
+    background-color: #ffc107; 
+    color: #000; 
+  }
 
 #word-display {
     font-size: 1.8vw;
@@ -58,25 +75,6 @@ body {
     font-size: 1.2vh;
     margin-bottom: 1vh;
 }
-.letter-buttons {
-    width: 4vw; 
-    height: 4vw; 
-    margin: 0.3vw; 
-    font-size: 3vw; 
-    border-radius: 13px;
-    background-color: #007bff; 
-    color: #fff; 
-    border: 2px solid #000; 
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .letter-button:hover {
-    background-color: #ffc107; 
-    color: #000; 
-  }
-
-
 .game-button {
     width: 9vw;
     height: 3vw;
