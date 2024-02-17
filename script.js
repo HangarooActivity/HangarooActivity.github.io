@@ -165,18 +165,6 @@ function updateLetterButtons() {
     clueButton.onclick = function () { getClue(); };
 }
 
-// Function to update the visual representation of incorrect guesses
-function updateGuessButtons() {
-    const guessButtons = document.querySelectorAll('.guess-button');
-    for (let i = 0; i < guessButtons.length; i++) {
-        if (i < incorrectGuesses) {
-            guessButtons[i].classList.add('highlighted');
-        } else {
-            guessButtons[i].classList.remove('highlighted');
-        }
-    }
-}
-
 // Function to check the user's guess against the secret word
 function checkGuess(guess) {
     let newGuess = false;
@@ -193,8 +181,12 @@ function checkGuess(guess) {
         // Increment incorrect guesses if the letter is not in the secret word
         if (!guessWord.includes(guess)) {
             incorrectGuesses++;
+            // Call updateGuessButtons to update the buttons' colors
+            updateGuessButtons();
         }
     }
+}
+
 
     // Update the display and check the game status
     updateDisplay();  
