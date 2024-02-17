@@ -192,7 +192,7 @@ function checkGuess(guess) {
     updateDisplay();  
     updateGuessButtons();
     checkGameStatus();
-}
+
 
 // Function to provide a clue to the user
 function getClue() {
