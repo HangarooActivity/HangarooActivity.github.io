@@ -159,6 +159,28 @@ function updateLetterButtons() {
 
         letterButtonsContainer.appendChild(button);
     }
+	document.addEventListener("DOMContentLoaded", function() {
+    var clickSound = document.getElementById("click-sound");
+    var wrongGuessSound = document.getElementById("wrong-guess-sound");
+    var clueButtonSound = document.getElementById("clue-button-sound");
+  
+    // Attach event listeners to all letter buttons
+    var letterButtons = document.querySelectorAll(".letter-button");
+    letterButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        clickSound.currentTime = 0; // Reset the audio to play from the beginning
+        clickSound.play(); // Play the click sound
+      });
+    });
+
+    // Attach event listener to the clue button
+    var clueButton = document.getElementById("clue-button");
+    clueButton.addEventListener("click", function() {
+      clueButtonSound.currentTime = 0; // Reset the audio to play from the beginning
+      clueButtonSound.play(); // Play the clue button sound
+    });
+  });
+  
 
     // Add functionality to the clue button
     const clueButton = document.getElementById('clue-button');
