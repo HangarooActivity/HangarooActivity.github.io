@@ -34,7 +34,7 @@
             startGameSound.play();
             
             // Redirect to the game page
-            window.location.href = "file:///Users/hannahpsalmbelbar/Downloads/hangaroo/index.html";
+            window.location.href = "(localhost/filename/login.php)"; <!-- to access the next button which is the gameplay -->
         });
     </script>
     
