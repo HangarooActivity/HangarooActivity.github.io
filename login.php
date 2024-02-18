@@ -22,12 +22,12 @@
             $email = $_POST["email"];
             $password = $_POST["password"];
                 require_once "database.php";
-                $sql = "SELECT * FROM register WHERE email = '$email'";
+                $sql = "SELECT * FROM users WHERE email = '$email'";
                 $result = mysqli_query($conn, $sql);
                 $users = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 if ($users) {
                     if(password_verify($password, $users["Password"])) {
-                       $_SESSION["register"] = "yes";
+                       $_SESSION["users"] = "yes";
                        header ("Location: index.php");
                        die();
                 } else {
