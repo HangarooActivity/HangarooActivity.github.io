@@ -1,0 +1,74 @@
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body, h1, h2, h3, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', sans-serif; 
+}
+
+/* Set background image */
+body {
+    background-image: url('kg.gif'); 
+    background-size: cover; 
+    background-position: center; 
+    overflow: hidden;
+}
+
+/* Center the homepage content */
+#homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    padding: 2rem; 
+}
+
+/* Style the title */
+h1 {
+    font-size: 3rem; 
+    margin-bottom: 2rem;
+    color: #fff; 
+    font-weight: bold; 
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px #ff8, 
+        0 0 15px #f80, 
+        0 0 20px #f00, 
+        0 0 25px #f00, 
+        0 0 30px #f00, 
+        0 0 35px #f00; 
+}
+
+
+/* Style the Start Game button */
+button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #ff5722; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f44336; 
+}
+
+/* Style the credits */
+.credits {
+    position: absolute;
+    bottom: 5px; 
+    text-align: center; 
+    color: black;
+    font-size: 0.7rem;
+    margin-bottom: 1.5rem; 
+}
+
+/* Add margin between h2 and h3 */
+.made-by {
+    margin-bottom: 0.2rem; 
+}
