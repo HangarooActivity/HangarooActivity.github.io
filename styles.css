@@ -1,3 +1,10 @@
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Apply the font to relevant elements */
+ h1, h2, h3, button {
+    font-family: 'Press Start 2P', sans-serif; /* Set font to Press Start 2P */
+}
 body {
     font-family: 'Arial', sans-serif;
     background: url(kangaroo.gif);
@@ -24,14 +31,13 @@ body {
     line-height: 4vh;
     border-radius: 10px;
     margin: 1vw;
-    font-size: 2vw;
+    font-size: 1vw;
 }
 
 .highlighted {
     background-color: red; 
     color: white; 
 }
-
 
 #game-container {
     width: 75vw;
@@ -41,6 +47,29 @@ body {
     color: #ffffff;
     margin: 2vh auto;
     font-size: 2.5vh;
+}
+#word-display {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#word-display span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 8px;
+    margin: 0 5px;
+    background-color: #ecf0f1; 
+    color: #2c3e50; 
+    text-align: center;
+}
+
+#attempts {
+    font-size: 1.2vh;
+    margin-bottom: 1vh;
 }
 .letter-button {
     width: 3vw; 
@@ -59,27 +88,6 @@ body {
     background-color: #ffc107; 
     color: #000; 
   }
-
-#word-display {
-    font-size: 1.8vw;
-    margin-bottom: 1vw;
-    display: flex;
-    justify-content: center;
-}
-
-#word-display span {
-    width: 4vw;
-    height: 4vw;
-    line-height: 4vw;
-    border-radius: 0.8vw;
-    margin: 0 0.5vw;
-    font-size: 3vw;
-}
-
-#attempts {
-    font-size: 1.2vh;
-    margin-bottom: 1vh;
-}
 .game-button {
     width: 9vw;
     height: 3vw;
@@ -87,7 +95,7 @@ body {
     border-radius: 1vw;
     margin: 0.5vw;
     padding: 0;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 #message {
@@ -168,16 +176,176 @@ body {
     margin: 1vw; 
     font-size: 1vw; 
 }
-/* design in php */
-.container {
-    max-width: 600pxx;
-    margin: 0 auto;
-    padding: 50px;
-    box-shadow: chartreuse;
- 
+/*
+=======
+    width: 3vw; 
+    height: 3vw; 
+    margin: 0.3vw; 
+    font-size: 1.5vw; 
 }
-.form-group {
-    margin-bottom: 30px;
+
+*/
+
+.highlighted {
+background-color: #FF0000;
+border-color: #FFFFFF;
+}
+/* Help button styles */
+#help-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
 }
 
 
+/* Message box styles */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+#close-button {
+    position: absolute;
+    bottom: 5px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.message-box p {
+    margin-bottom: 2rem; /* Adjust as needed */
+}
+/* Scoreboard button styles */
+#help-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+
+/* box styles */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+#close-button {
+    position: absolute;
+    bottom: 5px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.message-box p {
+    margin-bottom: 2rem; /* Adjust as needed */
+}
+/* Scoreboard button styles */
+#scoreboard-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Scoreboard modal styles */
+#scoreboard-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; /* Adjust the width as needed */
+    height: 80%; /* Adjust the height as needed */
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Close button styles */
+#scoreboard-close {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Scoreboard content styles */
+#scoreboard-content {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Scoreboard table styles */
+#scoreboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreboard-table th, #scoreboard-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#scoreboard-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
