@@ -168,5 +168,15 @@ body {
     margin: 1vw; 
     font-size: 1vw; 
 }
+.container {
+    max-width: 600pxx;
+    margin: 0 auto;
+    padding: 50px;
+    box-shadow: chartreuse;
+ 
+}
+.form-group {
+    margin-bottom: 30px;
+}
 
 
