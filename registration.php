@@ -45,7 +45,7 @@
             array_push ($errors, "Password does not match");
         }
         require_once "database.php";
-        $sql = "SELECT * FROM register WHERE Email = '$email'";
+        $sql = "SELECT * FROM users WHERE Email = '$email'";
         $result = mysqli_query($conn, $sql);
         $rowCount = mysqli_num_rows($result);
         if ($rowCount>0) {
@@ -58,7 +58,7 @@
                 }
             }else {
                 require_once "database.php";
-                $sql = "INSERT INTO register (Last_Name, First_Name, Email, Password) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO users (Last_Name, First_Name, Email, Password) VALUES (?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                $preparestmt = mysqli_stmt_prepare($stmt, $sql);
                 if ($preparestmt){
