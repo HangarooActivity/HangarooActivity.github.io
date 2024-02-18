@@ -1,0 +1,595 @@
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* welcomepage.html styles */
+
+/* Reset default margin and padding */
+body, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the welcome page content */
+#welcomepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Make the container at least full-height */
+    background-color: black;
+
+    padding: 2rem; /* Add some padding for better readability */
+}
+
+/* Style the title */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Style the copyright notice */
+h2 {
+    font-size: 1rem;
+    position: absolute; /* Position at the bottom */
+    bottom: 2rem; /* Adjust as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    color: whitesmoke; /* Gray color */
+}
+
+
+/* homepage.html styles */
+
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body, h1, h2, h3, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', sans-serif; 
+}
+
+/* Set background image */
+body {
+    background-image: url('kg.gif'); 
+    background-size: cover; 
+    background-position: center; 
+    overflow: hidden;
+}
+
+/* Center the homepage content */
+#homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    padding: 2rem; 
+}
+
+/* Style the title */
+h1 {
+    font-size: 3rem; 
+    margin-bottom: 2rem;
+    color: #fff; 
+    font-weight: bold; 
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px #ff8, 
+        0 0 15px #f80, 
+        0 0 20px #f00, 
+        0 0 25px #f00, 
+        0 0 30px #f00, 
+        0 0 35px #f00; 
+    animation: slideTop .5s ease forwards;
+}
+
+
+/* Style the Start Game button */
+button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #ff5722; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: slideRight .5s ease forwards;
+}
+
+button:hover {
+    background-color: #f44336; 
+}
+
+/* Style the credits */
+.credits {
+    position: absolute;
+    bottom: 5px; 
+    text-align: center; 
+    color: black;
+    font-size: 0.7rem;
+    margin-bottom: 1.5rem; 
+}
+
+/* Add margin between h2 and h3 */
+.made-by {
+    margin-bottom: 0.2rem; 
+}
+
+
+/* index.html styles */
+
+/* Apply the font to relevant elements */
+ h1, h2, h3, button {
+    font-family: 'Press Start 2P', sans-serif; /* Set font to Press Start 2P */
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background: url(kangaroo.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; 
+}
+#guesses-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.8vh;
+}
+
+.guess-button {
+    width: 6vw;
+    height: 5vh;
+    line-height: 4vh;
+    border-radius: 10px;
+    margin: 1vw;
+    font-size: 1vw;
+}
+
+.highlighted {
+    background-color: red; 
+    color: white; 
+}
+
+#game-container {
+    width: 75vw;
+    background-color: rgb(227, 148, 3);
+    padding: 2vh;
+    border-radius: 2vh;
+    color: #ffffff;
+    margin: 2vh auto;
+    font-size: 2.5vh;
+}
+#word-display {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#word-display span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 8px;
+    margin: 0 5px;
+    background-color: #ecf0f1; 
+    color: #2c3e50; 
+    text-align: center;
+}
+
+#attempts {
+    font-size: 1.2vh;
+    margin-bottom: 1vh;
+}
+.letter-button {
+    width: 3vw; 
+    height: 3vw; 
+    margin: 0.2vw; 
+    font-size: 2vw; 
+    border-radius: 13px;
+    background-color: #007bff; 
+    color: #fff; 
+    border: 2px solid #000; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .letter-button:hover {
+    background-color: #ffc107; 
+    color: #000; 
+  }
+.game-button {
+    width: 9vw;
+    height: 3vw;
+    line-height: 3vw;
+    border-radius: 1vw;
+    margin: 0.5vw;
+    padding: 0;
+    font-size: 1.5vw;
+}
+
+#message {
+    font-size: 2vw;
+    margin-top: 1vw;
+}
+
+.question-container {
+    background-color: #F1FEA5;
+    padding: 1vw;
+    border: solid 0.1vw #000000;
+    border-radius: 0.5vw;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question-container h2 {
+    font-size: 3vh;
+    margin-bottom: 0.5vh;
+}
+
+.question-content {
+    font-size: 1.8vw;
+    line-height: 1.2;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1vw;
+    border-radius: 0.5vw;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 0.5vw;
+    right: 0.5vw;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+#question-content {
+    color: rgb(227, 148, 3);
+    font-weight: bold;
+}
+
+.close {
+    position: absolute;
+    top: 0.5vw;
+    right: 0.5vw;
+    font-size: 1vw;
+    cursor: pointer;
+    display: none; /* Hide the close button "x" */
+}
+
+.button {
+    font-size: 1vw;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5vw; 
+}
+
+.button {
+
+    width: 3vw; 
+    height: 3vw; 
+    margin: 1vw; 
+    font-size: 1vw; 
+}
+/*
+=======
+    width: 3vw; 
+    height: 3vw; 
+    margin: 0.3vw; 
+    font-size: 1.5vw; 
+}
+
+*/
+
+.highlighted {
+background-color: #FF0000;
+border-color: #FFFFFF;
+}
+/* Help button styles */
+#help-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+
+/* Message box styles */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+#close-button {
+    position: absolute;
+    bottom: 5px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.message-box p {
+    margin-bottom: 2rem; /* Adjust as needed */
+}
+/* Scoreboard button styles */
+#help-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+
+/* box styles */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+#close-button {
+    position: absolute;
+    bottom: 5px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.message-box p {
+    margin-bottom: 2rem; /* Adjust as needed */
+}
+/* Scoreboard button styles */
+#scoreboard-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Scoreboard modal styles */
+#scoreboard-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; /* Adjust the width as needed */
+    height: 80%; /* Adjust the height as needed */
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Close button styles */
+#scoreboard-close {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Scoreboard content styles */
+#scoreboard-content {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Scoreboard table styles */
+#scoreboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreboard-table th, #scoreboard-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#scoreboard-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+
+/* login.php styles */
+
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Apply the font to the labels */
+label[for="email"], label[for="password"] {
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+body {
+    background-image: url('bg.jpeg'); /* Path to your background image */
+    background-size: cover; /* Adjusts the background image size to cover the entire page */
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.container {
+    margin-top: 100px;
+    border-radius: 10px;
+    background-image: url('wood.jpg'); /* Path to your background image */
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 50px; /* Increased padding */
+    text-align: center;
+    max-width: 800px; /* Increased maximum width */
+    margin: auto;
+}
+
+
+h1 {
+    color: #007bff;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    border-radius: 20px;
+    padding: 10px 40px;
+    background-color: #f19c08;
+    border-color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.registration-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.registration-link:hover {
+    text-decoration: underline;
+}
+/* Apply the font to the submit button */
+input[type="submit"] {
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+/* Apply the font to the "Not Registered yet?" text */
+div.form-btn,
+div.form-btn a {
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+
+/* registration.php styles */
+/* Apply the font to form elements */
+.form-control,
+.btn-primary {
+    font-family: 'Press Start 2P', sans-serif;
+}
+/* Apply the font to the labels */
+label[for="email"], label[for="password"] {
+    font-family: 'Press Start 2P';
+}
+
+body {
+    background-image: url('bg.jpeg'); 
+    background-size: cover; /
+}
+
+.container {
+    margin-top: 100px;
+    border-radius: 10px;
+    background-image: url('wood.jpg'); 
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 50px; 
+    text-align: center;
+    max-width: 800px; 
+    margin: auto;
+}
+
+/* Apply the font to the form elements */
+.form-control,
+.btn-primary {
+    font-family: 'Press Start 2P';
+}
+
+/* Apply the font to the "Not Registered yet?" text */
+.registration-link {
+    font-family: 'Press Start 2P';
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.registration-link:hover {
+    text-decoration: underline;
+}
