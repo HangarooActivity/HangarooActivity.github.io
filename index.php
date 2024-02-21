@@ -77,6 +77,11 @@
     <div id="message"></div>
     <div id="points">Points: 0</div>
     <button id="clue-button" class="game-button">Get Clue</button>
+    <div id="clue-options" style="display: none;">
+        <button id="vowel-button" class="clue-option-button">Vowel</button>
+        <button id="consonant-button" class="clue-option-button">Consonant</button>
+    </div>
+    
 </div>
  <!-- Help button -->
  <button id="help-button">Help</button>
