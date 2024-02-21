@@ -1,9 +1,10 @@
 <?php
     session_start();
-    if(isset($_SESSION["users"])){
-        header("Location: login.php");
+    if(!isset($_SESSION["users"])){
+        header("Location: home.php");
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,7 @@
     </div>
 
     <!-- Audio element for start game sound -->
-    <audio id="startGame-sound" src="start_button.mp3"></audio>
+    <audio id="startGame-sound" src="button_sound.mp3"></audio>
 
     <script>
         document.getElementById("start-game-button").addEventListener("click", function() {
@@ -34,7 +35,7 @@
             startGameSound.play();
             
             // Redirect to the game page
-            window.location.href = "(localhost/filename/login.php)"; <!-- to access the next button which is the gameplay -->
+            window.location.href = "game.php"; 
         });
     </script>
     
