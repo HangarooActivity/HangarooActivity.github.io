@@ -126,42 +126,43 @@ async function getQuestions(){
 	
 }
 
-// Function to update the display of the game
 function updateDisplay() {
     const wordDisplay = document.getElementById('word-display');
-    wordDisplay.innerHTML = guessWord.map(letter => `<span>${letter}</span>`).join('');
-    updateLetterButtons();
+    wordDisplay.innerHTML = guessWord.join(' '); // Use join(' ') to display the guessWord array as a string with spaces between letters
+    updateLetterButtons(); // Update the letter buttons after updating the word display
     
     const question = document.getElementById('question-content');
-	question.innerHTML = questionSet[indexArray[currentQuestionIndex]]; // post question at set index from indexArray's shuffle
-	
+    question.textContent = questionSet[indexArray[currentQuestionIndex]]; // Set the text content directly
+    
     // Update the points display
     document.getElementById('points').innerText = `Points: ${points}`;
 }
 
+
 // Function to update the letter buttons for user interaction
 function updateLetterButtons() {
-    const letterButtonsContainer = document.getElementById('letter-buttons');
-    letterButtonsContainer.innerHTML = "";
+    const letterButtons = document.querySelectorAll('.letter-button');
 
-    // Create buttons for each letter of the alphabet
-    for (let i = 65; i <= 90; i++) {
-        const letter = String.fromCharCode(i);
-        const button = document.createElement('button');
-        button.innerText = letter;
-        button.className = 'button';
-        button.onclick = function () { checkGuess(letter); };
-        
+    // Loop through each letter button
+    letterButtons.forEach(button => {
+        const letter = button.innerText;
+
         // Disable the button if the letter is already in the container
         if (guessWord.includes(letter)) {
             button.disabled = true;
+        } else {
+            button.disabled = false; // Ensure button is enabled if not guessed yet
         }
 
-        letterButtonsContainer.appendChild(button);
-    }
-	document.addEventListener("DOMContentLoaded", function() {
+        // Add an event listener for button click
+        button.addEventListener('click', function() {
+            checkGuess(letter);
+        });
+    });
+}
+// JavaScript code
+document.addEventListener("DOMContentLoaded", function() {
     var clickSound = document.getElementById("click-sound");
-    var wrongGuessSound = document.getElementById("wrong-guess-sound");
     var clueButtonSound = document.getElementById("clue-button-sound");
   
     // Attach event listeners to all letter buttons
@@ -172,7 +173,6 @@ function updateLetterButtons() {
         clickSound.play(); // Play the click sound
       });
     });
-
     // Attach event listener to the clue button
     var clueButton = document.getElementById("clue-button");
     clueButton.addEventListener("click", function() {
@@ -180,7 +180,35 @@ function updateLetterButtons() {
       clueButtonSound.play(); // Play the clue button sound
     });
   });
-  
+ // Get the help button element
+var helpButton = document.getElementById("help-button");
+
+// Get the close button element
+var closeButton = document.getElementById("close-button");
+
+// Get the audio element for help button
+var helpAudio = document.getElementById("help-audio");
+
+// Get the audio element for close button
+var closeAudio = document.getElementById("close-audio");
+
+// Add event listener to the help button
+helpButton.addEventListener("click", function() {
+    // Play the audio
+    helpAudio.play();
+
+    // Your existing logic to display the message box
+});
+
+// Add event listener to the close button
+closeButton.addEventListener("click", function() {
+    // Play the audio
+    closeAudio.play();
+
+    // Your existing logic to close the message box
+});
+
+
 // Function to update the visual representation of incorrect guesses
 function updateGuessButtons() {
     const guessButtons = document.querySelectorAll('.guess-button');
@@ -209,16 +237,18 @@ function checkGuess(guess) {
         // Increment incorrect guesses if the letter is not in the secret word
         if (!guessWord.includes(guess)) {
             incorrectGuesses++;
+            // Call updateGuessButtons to update the buttons' colors
+            updateGuessButtons();
         }
     }
-
+}
     // Update the display and check the game status
     updateDisplay();  
     updateGuessButtons();
     checkGameStatus();
-}
 
- const clueButton = document.getElementById('clue-button');
+
+    const clueButton = document.getElementById('clue-button');
     const clueOptionsBox = document.getElementById('clue-options');
     const vowelButton = document.getElementById('vowel-button');
     const consonantButton = document.getElementById('consonant-button');
@@ -290,9 +320,14 @@ function checkGuess(guess) {
         return remainingConsonants[Math.floor(Math.random() * remainingConsonants.length)];
     }
     
-
+    
 // Function to check the game status (win, lose, or continue)
 function checkGameStatus() {
+    // Ensure the game has started before checking the game status
+    if (!secretWord || !guessWord.length) {
+        return;
+    }
+
     if (!guessWord.includes('_')) {
         // Update points and display a message for a correct guess
         points += 10;
@@ -302,15 +337,14 @@ function checkGameStatus() {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
             changeLevel++;
-			indexArray = [];
-			moveNextLevel();
+            indexArray = [];
+            moveNextLevel();
         } else {
             // Move to the next question
             currentQuestionIndex++;
             secretWord = chooseWord();
             guessWord = Array(secretWord.length).fill("_");
             incorrectGuesses = 0;
-	    updateGuessButtons();
             updateDisplay();
         }
     } else if (incorrectGuesses >= 3) {
@@ -321,8 +355,8 @@ function checkGameStatus() {
             // If it's the last word for the current level, move to the next level
             displayMessage(`You've completed all questions for ${currentLevel} level! You earned ${points} points.`);
             changeLevel++;
-			indexArray = [];
-			moveNextLevel();
+            indexArray = [];
+            moveNextLevel();
         } else {
             // Move to the next question
             currentQuestionIndex++;
@@ -349,6 +383,19 @@ function moveNextLevel() {
         displayMessage("Congratulations! You've completed all levels.");
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    var helpButton = document.getElementById("help-button");
+    var messageBox = document.getElementById("message-box");
+    var closeButton = document.getElementById("close-button");
+
+    helpButton.addEventListener("click", function() {
+        messageBox.style.display = "block";
+    });
+
+    closeButton.addEventListener("click", function() {
+        messageBox.style.display = "none";
+    });
+});
 
 function randomizeLevel(){
 	//randomize questionIndex, store the resulting array value inside questionOrder 
@@ -362,20 +409,39 @@ function randomizeLevel(){
 			} else if (itemNum < x) {
 				indexArray.unshift(itemNum);
 				itemNum++;
-			}
-	}
-}
+			}}}
+	document.addEventListener("DOMContentLoaded", function() {
+    // Scoreboard button
+    const scoreboardButton = document.getElementById("scoreboard-button");
+    const scoreboardModal = document.getElementById("scoreboard-modal");
+    const scoreboardCloseButton = document.getElementById("scoreboard-close");
+    const scoreboardButtonAudio = document.getElementById("scoreboard-button-audio");
 
-function displayMessage(message) {
-    document.getElementById('message').innerText = message;
-    document.getElementById('letter-buttons').innerHTML = "";
-}
+    scoreboardButton.addEventListener("click", function() {
+        // Play audio
+        scoreboardButtonAudio.play();
+        // Show the scoreboard modal
+        scoreboardModal.style.display = "block";
+    });
+
+    // Close the scoreboard modal when the close button is clicked
+    scoreboardCloseButton.addEventListener("click", function() {
+        // Play close audio
+        const scoreboardCloseAudio = document.getElementById("scoreboard-close-audio");
+        scoreboardCloseAudio.play();
+        // Hide the scoreboard modal
+        scoreboardModal.style.display = "none";
+    });
+});
+
+    function displayMessage(message) {
+        document.getElementById('message').innerText = message;
+    }
+    
+    
+    function displayMessage(message) {
+        document.getElementById('message').innerText = message;
+    }
+    
 
 initializeGame();
-
-
-    
-  
-   
-
-    
