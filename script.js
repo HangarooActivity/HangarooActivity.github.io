@@ -181,12 +181,6 @@ function updateLetterButtons() {
     });
   });
   
-
-    // Add functionality to the clue button
-    const clueButton = document.getElementById('clue-button');
-    clueButton.onclick = function () { getClue(); };
-}
-
 // Function to update the visual representation of incorrect guesses
 function updateGuessButtons() {
     const guessButtons = document.querySelectorAll('.guess-button');
@@ -224,58 +218,78 @@ function checkGuess(guess) {
     checkGameStatus();
 }
 
-// Function to provide a clue to the user
-function getClue() {
-    if (cluesUsed < 3 && points >= 25) {
-        const unrevealedIndices = guessWord.reduce((indices, letter, index) => {
-            if (letter === '_') {
-                indices.push(index);
-            }
-            return indices;
-        }, []);
-
-        if (unrevealedIndices.length > 0) {
-            // Randomly reveal a letter in the word as a clue
-            const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
-            guessWord[randomIndex] = secretWord[randomIndex];
-            unrevealedIndices.forEach(index => {
-                if (index !== randomIndex && secretWord[index] === secretWord[randomIndex]) {
-                    guessWord[index] = secretWord[index];
-                }
-            });
-
-            points -= 25;
-            cluesUsed++;
-            displayMessage(`Clue revealed! You have earned a clue for 25 points.`);
-
-            // Check if all letters have been revealed to move to the next question
-            if (guessWord.indexOf('_') === -1) {
-                setTimeout(() => {
-                    moveNextQuestion();
-                }, 1000);
-            }
-        }
-    } else {
-        // Display a message if the user cannot get a clue
-        const message = cluesUsed >= 3 ? "You've already used all your clues." : "You don't have enough points for a clue.";
-        displayMessage(message);
+ const clueButton = document.getElementById('clue-button');
+    const clueOptionsBox = document.getElementById('clue-options');
+    const vowelButton = document.getElementById('vowel-button');
+    const consonantButton = document.getElementById('consonant-button');
+    
+    clueButton.onclick = function () { showClueOptions(); };
+    
+    function showClueOptions() {
+        clueOptionsBox.style.display = 'block';
     }
-    updateDisplay();
-}
-
-// Function to reveal a consonant given a letter
-function revealConsonant(letter) {
-    const consonants = "BCDFGHJKLMNPQRSTVWXYZ";
-    const remainingConsonants = [...consonants].filter(c => c !== letter);
-    return remainingConsonants[Math.floor(Math.random() * remainingConsonants.length)];
-}
-
-// Function to reveal a vowel given a letter
-function revealVowel(letter) {
-    const vowels = "AEIOU";
-    const remainingVowels = [...vowels].filter(v => v !== letter);
-    return remainingVowels[Math.floor(Math.random() * remainingVowels.length)];
-}
+    
+    vowelButton.onclick = function () { getClue('vowel'); };
+    consonantButton.onclick = function () { getClue('consonant'); };
+    
+    function getClue(clueType) {
+        if (cluesUsed < 3 && points >= 25) {
+            const unrevealedIndices = guessWord.reduce((indices, letter, index) => {
+                if (letter === '_') {
+                    indices.push(index);
+                }
+                return indices;
+            }, []);
+    
+            if (unrevealedIndices.length > 0) {
+                let randomIndex;
+                if (clueType === 'vowel') {
+                    randomIndex = revealVowel();
+                } else if (clueType === 'consonant') {
+                    randomIndex = revealConsonant();
+                }
+    
+                guessWord[randomIndex] = secretWord[randomIndex];
+                unrevealedIndices.forEach(index => {
+                    if (index !== randomIndex && secretWord[index] === secretWord[randomIndex]) {
+                        guessWord[index] = secretWord[index];
+                    }
+                });
+    
+                points -= 25;
+                cluesUsed++;
+                displayMessage(`Clue revealed! You have earned a clue for 25 points.`);
+    
+                // Check if all letters have been revealed to move to the next question
+                if (guessWord.indexOf('_') === -1) {
+                    setTimeout(() => {
+                        moveNextQuestion();
+                    }, 1000);
+                }
+            }
+        } else {
+            // Display a message if the user cannot get a clue
+            const message = cluesUsed >= 3 ? "You've already used all your clues." : "You don't have enough points for a clue.";
+            displayMessage(message);
+        }
+        clueOptionsBox.style.display = 'none'; // Hide the clue options box
+        updateDisplay();
+    }
+    
+    // Function to reveal a random vowel
+    function revealVowel() {
+        const vowels = "AEIOU";
+        const remainingVowels = [...vowels].filter(v => !guessWord.includes(v));
+        return remainingVowels[Math.floor(Math.random() * remainingVowels.length)];
+    }
+    
+    // Function to reveal a random consonant
+    function revealConsonant() {
+        const consonants = "BCDFGHJKLMNPQRSTVWXYZ";
+        const remainingConsonants = [...consonants].filter(c => !guessWord.includes(c));
+        return remainingConsonants[Math.floor(Math.random() * remainingConsonants.length)];
+    }
+    
 
 // Function to check the game status (win, lose, or continue)
 function checkGameStatus() {
