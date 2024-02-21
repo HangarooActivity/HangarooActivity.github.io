@@ -1,7 +1,8 @@
 <?php
     session_start();
-    if(isset($_SESSION["users"])){
-        header("Location: index.php");
+    if(isset($_SESSION["users"]) && $_SESSION["users"] === "yes"){
+        header("Location: home.php");
+        exit();
     }
 ?>
 
@@ -28,8 +29,9 @@
                 if ($users) {
                     if(password_verify($password, $users["Password"])) {
                        $_SESSION["users"] = "yes";
-                       header ("Location: index.php");
-                       die();
+                       echo "<div class = 'alert alert-success'> You are now logged in successfully! </div>";
+                       echo '<script> setTimeout(() => window.location.href = "home.php", 3000); </script>';
+                       exit();
                 } else {
                     echo "<div class= 'alert alert-danger'> Password does not match </div>";
                 }
@@ -56,7 +58,7 @@
             </div>
 
         </form>
-        <div><p>Not Registered yet? <a href="registration.php"> Register Here</a></div>
+        <div><p>Not Registered yet? <a href="index.php"> Register Here</a></div>
     </div>
 </body>
 </html>
